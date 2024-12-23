@@ -41,9 +41,14 @@ See the [syllabus](https://raw.githack.com/edrubin/EC421W25/master/syllabus/syll
 Here are some exams from previous years:
 
 | Term | Midterm | Final |
-|:-----|:--------|:------|
+|:----:|:-------:|:-----:|
 | Winter 2019 |  | [exam](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2019w.pdf) [key](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2019w-key.pdf) |
 | Spring 2019 |  | [exam](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2019s.pdf) [key](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2019s-key.pdf) |
+| Winter 2020 |  | [exam](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2020w.pdf) [key](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2020w-key.pdf) |
+| Spring 2020 |  | [exam](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2020s.pdf) [key](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2020s-key.pdf) |
+| Winter 2022 |  | [home exam](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2022w-home.pdf) [home key](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2022w-home-key.html) |
+| Winter 2023 |  | [home exam](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2023w-home.html) [home key](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2023w-home-key.html) [in-class exam](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2023w-inclass.pdf) [in-class key](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2023w-inclass-key.pdf) |
+| Spring 2023 |  | [home exam](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2023s.html) [in-class exam](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2023s-inclass.pdf) |
 
 ## Previous years
 
