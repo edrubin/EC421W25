@@ -42,7 +42,8 @@ Here are some exams from previous years:
 
 | Term | Midterm | Final |
 |:-----|:--------|:------|
-| Spring 2019 | | |
+| Winter 2019 |  | [exam](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2019w.pdf) [key](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2019w-key.pdf) |
+| Spring 2019 |  | [exam](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2019s.pdf) [key](https://raw.githack.com/edrubin/EC421W25/master/final/past/final-2019s-key.pdf) |
 
 ## Previous years
 
