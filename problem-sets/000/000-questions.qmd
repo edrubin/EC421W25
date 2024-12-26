@@ -1,0 +1,266 @@
+---
+title: "Problem Set 0: Review"
+subtitle: "EC 421: Introduction to Econometrics"
+author: "Edward Rubin"
+format:
+  html:
+    toc: true
+    number-sections: true
+    self-contained: true
+    theme:
+    - cosmo
+    - ed.scss
+---
+
+```{r, setup}
+#| include: false
+
+# Load magrittr
+library(magrittr)
+# Knitr options
+knitr::opts_chunk$set(
+  comment = "#>",
+  fig.align = "center",
+  fig.height = 7,
+  fig.width = 10.5,
+  warning = F,
+  message = F
+)
+knitr::opts_chunk$set(dev = "svg")
+options(device = function(file, width, height) {
+  svg(tempfile(), width = width, height = height)
+})
+options(digits = 4)
+options(width = 90)
+```
+
+## Instructions
+
+[**Due**]{style="text-decoration: underline;"} Upload your answer on [Canvas](https://canvas.uoregon.edu/) *before* midnight on Sunday, 12 January 2025.
+
+[**Important**]{style="text-decoration: underline;"} You must submit your answers as an HTML or PDF file, built from an RMarkdown (`.RMD`) or Quarto (`.qmd`) file. **Do not submit the `.RMD` or `.qmd` file.** You will not receive credit for it.
+
+If we ask you to create a figure or run a regression, then the figure or the regression results should be in the document that you submit (not just the code—we want the actual figure or regression output with coefficients, standard errors, *etc.*).
+
+[**Integrity**]{style="text-decoration: underline;"} If you are suspected of cheating, then you will receive a zero—for the assignment and possibly for the course. We may report you to the dean. **Cheating includes copying from your classmates, from the internet, and from previous assignments.**
+
+[**README!**]{style="text-decoration: underline;"} The data in this problem set are known as the [*Boston Housing Dataset*](https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html). The data are from the 1970s and are used in many econometrics textbooks. We'll get to more exciting/current datasets soon, but for now let's use this classic dataset.
+
+The table below describes each variable in the dataset.
+
+| Variable name      | Variable description |
+|:-------------------|:---------------------|
+| `crim`  | per capita crime rate by town |
+| `zn` | proportion of residential land zoned for lots over 25,000 sq.ft |
+| `indus` | proportion of non-retail business acres per town |
+| `chas` | Charles River dummy variable (= 1 if tract bounds river; 0 otherwise) |
+| `nox` | nitric oxides concentration (parts per 10 million) |
+| `rm` | average number of rooms per dwelling |
+| `age` | proportion of owner-occupied units built prior to 1940 |
+| `dis` | weighted distances to ﬁve Boston employment centers |
+| `rad` | index of accessibility to radial highways |
+| `tax` | full-value property-tax rate per $10,000 |
+| `ptratio` | pupil-to-teacher ratio by town |
+| `b` | 1000(Bk−0.63)^2 where Bk is the proportion of the town's black population |
+| `lstat` | % lower status of the population |
+| `medv` | Median value of owner-occupied homes in $1000s |
+
+: Variable names and descriptions
+
+[**Objective**]{style="text-decoration: underline;"} This problem set has three purposes: (1) review the econometrics topics you covered in EC320; (2) refresh (or build) .mono[R] toolset; (3) start building your intuition about causality within econometrics/regression.
+
+## Setup 
+
+**[01]** Load your `R` packages (and install any packages that are not already installed).
+
+- You will probably want `tidyverse` and `here` (among others).
+- *Also:* `pacman` and it's `p_load()` function make package management easier—you just use `p_load()` to load packages, and `R` will install the packages if they're not already installed.
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer01, include = FALSE}
+# Load packages using 'pacman'
+library(pacman)
+p_load(tidyverse, patchwork, fixest, here)
+```
+
+:::
+
+**[02]** Now load the data (stored in `data-ps1.csv`).
+
+I saved the data as a CSV, so you'll want to use a function that can read CSV files—for example, `read_csv()` in the `readr` package, which is part of the `tidyverse`.
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer02, include = FALSE}
+# Load data
+ps_df = here('data-ps1.csv') %>% read_csv()
+```
+
+:::
+
+## Get to know your data
+
+**[03]** Each row of the dataset represents a different county. How many counties are in the data? *Hint:* Try `dim()` or `nrow()`.
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer03, include = FALSE}
+# Check dimensions
+dim(ps_df)
+```
+
+We have `r nrow(ps_df) %>% scales::comma()` counties (rows) in the data.
+
+:::
+
+**[04]** How many variables are there? How many *numeric* variables are there? 
+
+*Hint:* You have many options here; try `glimpse()` (in the `tidyverse`), `summary()`, or `skim()` (from the `skimr` package).
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer04}
+# Get a 'glimpse' of the dataset
+glimpse(ps_df)
+```
+
+We have `r ncol(ps_df)` variables in the data.
+
+:::
+
+**[05]** How many observations are missing their median AQI (`median_aqi`)? *Note:* This air quality index (AQI) gives a sense of how "good" the air quality is in a location, but it requires (expensive) air quality monitors. As you can see in the data, not every county in the monitor has a monitor.
+
+*Hints:*
+
+- The function `is.na()` detects whether observations are missing.
+- You can filter your dataset to observations missing a variable using the `filter()` function, for example, `my_data |> filter(is.na(my_variable))` would filter the dataset `my_data` to observations missing values for the variable `my_variable`.
+- You could also sum the results of `is.na()` to see how many of them are missing. `is.na()` returns `TRUE` or `FALSE`. `TRUE` is a `1`, and `FALSE` is a `0`.
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer05, include = FALSE}
+# Sum the TRUEs for is.na()
+is.na(ps_df$median_aqi) |> sum()
+```
+
+In the dataset, `r is.na(ps_df$median_aqi) |> sum() |> scales::comma()` counties do not have an AQI value.
+
+:::
+
+**[06]** Find Lane County, Oregon (the county that UO is in). What are the median and max AQI for Lane County?
+
+*Hint:* There is a county name column called `name`. You can `filter()` the data using this `name` and Lane County's actual name (`"Lane County, Oregon"`).
+
+## Plot the data
+
+Time to make a few figures. Visualization is a fantastic way to get to know the data and to try to figure out any potential issues/features.
+
+**[07]** Plot a histogram of counties' median AQI.
+
+Don't forget to label your plot's axes. A title would be good too.
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer07, include = FALSE}
+# Create the histogram of median AQI
+ggplot(data = ps_df, aes(x = median_aqi)) +
+geom_histogram(bins = 50) +
+scale_x_continuous('Median AQI', labels = scales::comma) +
+scale_y_continuous('Number of counties', labels = scales::comma) +
+ggtitle(
+  'Distribution of the median AQI',
+  'Data: EPA, 2022'
+) +
+theme_minimal(base_size = 10, base_family = 'Fira Sans Condensed')
+```
+
+:::
+
+**[08]** Now plot a histogram of the base-10 log of population (`n_pop`). In case your logs are rusty, the base-10 log tells you to what exponent you would need to raise 10 in order to get the original number. For example, 100 = 10^**2**, so the base-10 log of 100 is **2**. `R`'s function for base-10 log is `log10()`. Alternatively, you can also change the x-axis in `ggplot` using the `scale_x_log10` function. Your choice!
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer08}
+# Create the histogram of population (base-10 log)
+ggplot(data = ps_df, aes(x = n_pop)) +
+geom_histogram(bins = 50) +
+scale_x_log10('Population (log10)', labels = scales::comma) +
+scale_y_continuous('Number of counties', labels = scales::comma) +
+ggtitle(
+  'Distribution of the county population',
+  'Data: ACS, 2017–2021'
+) +
+theme_minimal(base_size = 10, base_family = 'Fira Sans Condensed')
+```
+
+:::
+
+**[09]** Why do you think we used a log transformation for the histogram in **[08]**? Explain your answer.
+
+:::{style="display: none;"}
+[Answer]{.ans} Log transformations can help 'reduce' outliers. The base-10 transformation is easier (in my opinion) to interpret.
+
+:::
+
+## Analyze the data!
+
+Let's run a few regressions.
+
+**[10]** Different models suggest that air quality could be better or worse in more populated areas. For example, more populated will have more people driving cars and participating in industries and activities that generate pollution—so population and pollution could be positively correlated. On the other hand, population density (which probably requires a sufficiently larger population) can enable public transit and reduce miles traveled—reducing pollution.
+
+Let's see which hypothesis the data support. Regress counties' median AQI (`median_aqi`) on population size (`n_pop`).
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer10, include = FALSE}
+feols(median_aqi ~ n_pop, data = ps_df)
+```
+
+:::
+
+**[11]** Interpret the intercept and coefficient.
+
+**[12]** It probably doesn't make sense to think about adding *one person*. Add a new variable to the dataset that is county population (`n_pop`) divided by ten thousand.
+
+**[13]** Repeat the regression in **[10]** but with this new population variable (population in tens of thousands). Interpret the estimated intercept and coefficient.
+
+**[14]** Which hypothesis do the data support? Explain your answer.
+
+**[15]** Estimate a log-log regression model (make sure you use `log` rather than `log10`).
+
+**[16]** Interpret the estimated slope coefficient in your log-log model.
+
+**[17]** Is this estimate in the log-log model consistent with your linear (non-logged) estimates? Explain.
+
+## Who is missing?
+
+**[18]** What is `R` doing with all of the counties with missing (`NA`) values for `median_aqi`? 
+
+*Hint:* Look at the number of observations in your regressions.
+
+**[19]** Create a binary variable (in your dataset) called `no_aqi` that equals `1` if the county is missing its median AQI (`median_aqi`). 
+
+*Hints:* Remember that you can use `is.na()` to determine whether a value is missing. This will produce `TRUE` or `FALSE`. You can then multiply those values by `1` to convert them to `1` (for `TRUE`) and `0` (for `FALSE`).
+
+**[20]** What is the mean of this new variable (`no_aqi`)? What does this mean tell you?
+
+**[21]** Regress this new variable (`no_aqi`) on population (in tens of thousands). Are more populous areas more likely to have AQI monitored? Explain your answer using your estimated intercept and slope.
+
+**[22]** What is the biggest county without AQI calculated? What is its population?
+
+**[23]** What is the smallest county with AQI calculated? What is its population?
+
+**[24]** Would it make sense to use a log-linear specification for the regression of `no_aqi` and population? Explain your answer.
+
+## Summary
+
+**[25]** What are your takeaways/insights about air quality and population in the US? Explain your answer using the figures and regressions you already created—and any other analyses you wish to run.
