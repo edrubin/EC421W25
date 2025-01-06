@@ -1,0 +1,23 @@
+
+# Temporary holds: Lecture
+notes/0[4-9]*
+notes/1*
+
+# Notes cache
+notes/*/slides_cache/*
+
+# Non-review test files
+midterm/exam-inclass/*
+midterm/exam-home/*
+final/exam-inclass/*
+final/exam-home/*
+
+# Problem sets
+# problem-sets/000*
+problem-sets/001*
+problem-sets/002*
+problem-sets/003*
+problem-sets/004*
+
+# Misc files
+*.DS_Store
