@@ -9,10 +9,10 @@ For information on the course specifics, please see the [syllabus](https://raw.g
 ## Assignments
 
 **Problem Set 0: Review**
-<br>Due: Tuesday, 28 January 2025 by 11:59 PM
+<br>Due: Tuesday, 28 January 2025 by 11:59 PM. Submit via [Canvas](https://canvas.uoregon.edu/courses/254921/assignments/1793531).
 <br>Files: [assignment](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/000/000-questions.html) | [data](https://github.com/edrubin/EC421W25/tree/master/problem-sets/000/data-acs.csv)
 
-*Note:* You can use the box in the top right corner with the `⋯` to download the files. 
+*Note:* You can use the box in the top right corner with the `⋯` to download the files (or the button with the download arrow ).
 
 ## Lecture slides
 
