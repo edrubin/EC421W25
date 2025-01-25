@@ -6,6 +6,14 @@ Welcome to **Economics 421: Introduction to Econometrics** (Winter 2025) at the 
 
 For information on the course specifics, please see the [syllabus](https://raw.githack.com/edrubin/EC421W25/master/syllabus/syllabus.pdf).
 
+## Assignments
+
+**Problem Set 0: Review**
+<br>Due: Tuesday, 28 January 2025 by 11:59 PM
+<br>Files: [assignment](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/000/000-questions.html) | [data](https://github.com/edrubin/EC421W25/tree/master/problem-sets/000/data-acs.csv)
+
+*Note:* You can use the box in the top right corner with the `⋯` to download the files. 
+
 ## Lecture slides
 
 The slides below (linked by their topic) are .html files that will only work properly if you are connected to the internet. If you're going off grid, grab the PDFs (you'll miss out on gifs and interactive plots, but the equations will render correctly).

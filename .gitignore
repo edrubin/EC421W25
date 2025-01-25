@@ -12,8 +12,13 @@ midterm/exam-home/*
 final/exam-inclass/*
 final/exam-home/*
 
-# Problem sets
-problem-sets/000*
+# Problem sets: Assigned
+problem-sets/000/data-raw*
+problem-sets/000/clean-data.R
+problem-sets/000/000-questions.qmd
+problem-sets/000/ed.scss
+
+# Problem sets: Future
 problem-sets/001*
 problem-sets/002*
 problem-sets/003*
