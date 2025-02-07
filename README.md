@@ -18,6 +18,15 @@ For information on the course specifics, please see the [syllabus](https://raw.g
 
 *Note:* You can use the box in the top right corner with the `⋯` to download the files. (You can also use the button with the download arrow.)
 
+## Midterm prep materials
+
+In addition to the past exams linked below, here are some additional materials to help you prepare for the midterm:
+
+- [topics list](https://raw.githack.com/edrubin/EC421W25/master/midterm/prep/topics/midterm-topics.html) lists the main topics you should know from each of the sets of slides;
+- [practice questions](https://raw.githack.com/edrubin/EC421W25/master/midterm/prep/review/midterm-review.html) provides a bunch of review questions to help test your understanding. 
+
+*Note:* I will not post answers to the practice questions, but you can certainly ask about them in the review sessions (Tuesday in class; Wednesday in lab) or in office hours.
+
 ## Lecture slides
 
 The slides below (linked by their topic) are .html files that will only work properly if you are connected to the internet. If you're going off grid, grab the PDFs (you'll miss out on gifs and interactive plots, but the equations will render correctly).
