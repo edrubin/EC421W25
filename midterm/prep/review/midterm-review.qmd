@@ -17,9 +17,9 @@ These questions should help you review, along with the two problem sets. They ar
 
 ## Practice problems
 
-1\. What is the difference between *u*~i~ and *e*~i~?
+1\. What is the difference between $u_{i}$ and $e_{i}$?
 
-2\. Why do we care about *u*~i~^²^ ?
+2\. Why do we care about $u_{i}^{2}$?
 
 3\. Explain each of our assumptions for the linear-regression model _in words_.
 
@@ -83,9 +83,9 @@ Suppose we omitted the variable $\text{Ability}$. Will our estimate $\hat{\beta}
 
 25\. What do we mean by *prediction*? Does causality matter for prediction? (Explain.)
 
-26\. How do time-series data differ from cross-sectional data?
+26\. What happens to OLS when the disturbances are correlatd with the explanatory variables?
 
-27\. What is the difference between a **static** time-series model and a **dynamic** time-series model?
+27\. What happens to OLS when the disturbances are not independent of each other?
 
 28\. Write down the model that each of the lines of `R` code estimates. How would you interpret the coefficients in each model?
 
