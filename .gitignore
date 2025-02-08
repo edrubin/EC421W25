@@ -15,9 +15,6 @@ final/exam-home/*
 # Problem sets: Assigned
 # PS 0
 problem-sets/000/data-raw*
-problem-sets/000/clean-data.R
-problem-sets/000/000-questions.qmd
-problem-sets/000/ed.scss
 # PS 1
 problem-sets/001/data-raw*
 problem-sets/001/clean-data.R

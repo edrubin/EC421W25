@@ -1,0 +1,493 @@
+---
+title: "Problem Set 0: Review"
+subtitle: "EC 421: Introduction to Econometrics"
+author: "Edward Rubin"
+format:
+  html:
+    toc: true
+    number-sections: true
+    self-contained: true
+    theme:
+    - cosmo
+    - ed.scss
+editor:
+  render-on-save: true
+---
+
+## Instructions
+
+[**Due**]{style="text-decoration: underline;"} Upload your answer on [Canvas](https://canvas.uoregon.edu/) *before* midnight on Tuesday, 28 January 2025.
+
+[**Important**]{style="text-decoration: underline;"} You must submit your answers as an HTML or PDF file, built from an RMarkdown (`.rmd`) or Quarto (`.qmd`) file. **Do not submit the `.rmd` or `.qmd` file.** You will not receive credit for it.
+
+If we ask you to create a figure or run a regression, then the figure or the regression results should be in the document that you submit (not just the code—we want the actual figure or regression output with coefficients, standard errors, *etc.*).
+
+[**Integrity**]{style="text-decoration: underline;"} If you are suspected of cheating, then you will receive a zero—for the assignment and possibly for the course. We may report you to the dean. **Cheating includes copying from your classmates, from the internet, and from previous assignments.**
+
+[**Objective**]{style="text-decoration: underline;"} This problem set has three goals: (1) review the central econometrics topics you covered in EC320; (2) refresh (or build) your [R]{.mono} toolset; (3) start building your intuition about causality within econometrics/regression.
+
+[**README!**]{style="text-decoration: underline;"} The data in this problem set come from the 2023 [American Community Survey](https://www.census.gov/programs-surveys/acs) (ACS; downloaded from [IPUMS USA](https://usa.ipums.org/usa/)). The ACS annually surveys approximately 3.5 million households. I've provided a random subset of 10,000 individuals—all of whom are at least 18 years old. The data are stored in a CSV file named `data-acs.csv`. 
+
+The table below describes each variable in the dataset.
+
+| Variable name      | Variable description |
+|:-------------------|:---------------------|
+| `sex`  | The individual's sex (`Female` or `Male`). (`character`) |
+| `age`  | The individual's age (`18` to `99`). (`integer`) |
+| `race`  | The individual's race (6 broad categories). (`character`) |
+| `hispanic`  | Whether the individual is `Hispanic` or `Non-Hispanic`. (`character`) |
+| `educ`  | A rough estimate of the individual's years of eduation (`1=` first grade; `17=` graduate school). (`integer`) |
+| `empstat`  | The individual's employment status (`Employed`, `Unemployed`, `Not in labor force`). (`character`) |
+| `hrs_wk`  | The number of hours the individual works per week. (`integer`) |
+| `income`  | The individual's income in dollars. (`integer`) |
+| `deg_bachelors`  | A binary indicator for whether the individual has a bachelor's degree. (`integer`) |
+| `deg_masters`  | A binary indicator for whether the individual has a master's degree. (`integer`) |
+| `deg_profession`  | A binary indicator for whether the individual has a professional degree (e.g., law or medicine). (`integer`) |
+| `deg_phd`  | A binary indicator for whether the individual has a doctorate. (`integer`) |
+| `i_female`  | A binary indicator for whether the individual's sex is female. (`integer`) |
+| `i_black`  | A binary indicator for whether the individual is Black. (`integer`) |
+| `i_white`  | A binary indicator for whether the individual is White. (`integer`) |
+| `i_hispanic`  | A binary indicator for whether the individual is Hispanic. (`integer`) |
+| `i_workforce`  | A binary indicator for whether the individual is in the workforce (employed or unemployed). (`integer`) |
+| `i_employed`  | A binary indicator for whether the individual is employed. (`integer`) |
+
+: Variable names and descriptions
+
+## Setup 
+
+**[01]** Load your `R` packages (and install any packages that are not already installed).
+
+- You will probably want `tidyverse` and `here` (among others).
+- *Also:* `pacman` and it's `p_load()` function make package management easier—you just use `p_load()` to load packages, and `R` will install the packages if they're not already installed. E.g., use `p_load(tidverse, here)` after you load the `pacman` package with `library(pacman)`. Remember that you will have to install `pacman` (`install.packages("pacman")`) if you have not installed it already.
+
+:::{style="display: default;"}
+[Answer]{.ans} I'm going to load five packages:
+
+- `tidyverse` (for data manipulation),
+- `scales` (for formatting numbers),
+- `patchwork` (for combining plots),
+- `fixest` (for regressions),
+- `here` (for managing file paths).
+
+```{r, answer01}
+#| include: true
+
+# Load packages using 'pacman'
+library(pacman)
+p_load(tidyverse, scales, patchwork, fixest, here)
+```
+
+:::
+
+**[02]** Now load the data (stored in `data-acs.csv`).
+
+As described above, I saved the data as a CSV, so you'll want to use a function that can read CSV files.
+
+Examples of functions that can read a CSV file:
+
+- `read_csv()` in the `readr` package, which is part of the `tidyverse`;
+- `fread()` in the `data.table` package;
+- `read.csv()`, which is available without loading any packages. 
+
+:::{style="display: default;"}
+[Answer]{.ans} I'm using `read_csv()` from the `tidyverse` package to load the data.
+
+```{r, answer02}
+#| include: true
+
+# Load data
+acs_df = here('data-acs.csv') |> read_csv()
+```
+
+:::
+
+## Get to know your data
+
+**[03]** Use `dim()` or `nrow()` to confirm that you have 10,000 observations (rows) in your dataset.
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+```{r, answer03}
+#| include: true
+ 
+# Check dimensions
+acs_df |> nrow() |> comma()
+```
+
+Looks right!
+
+:::
+
+**[04]** It's good to know *which* variables are in the dataset and *what type* (`class()`) they are. How many categorical variables are in the dataset?
+
+*Hint:* You have many options here; try `glimpse()` (in the `tidyverse`), `summary()`, or `skim()` (from the `skimr` package). Also: If you used `read_csv()` or `fread()` to load the data, then just typing the name of the dataset will display the first few rows and the class of each variable.
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+```{r, answer04}
+#| include: true
+
+# Get a 'glimpse' of the dataset
+glimpse(acs_df)
+```
+
+We have four categorical variables in the dataset: `sex`, `race`, `hispanic`, and `empstat`.
+
+:::
+
+**[05]** How many observations are missing data on `income`?
+
+*Hints:*
+
+- The function `is.na()` detects whether observations are missing.
+- You can filter your dataset to observations missing a variable using the `filter()` function, for example, `my_data |> filter(is.na(my_variable))` would filter the dataset `my_data` to observations missing values for the variable `my_variable`.
+- You could also sum the results of `is.na()` to see how many of them are missing. `is.na()` returns `TRUE` or `FALSE`. `TRUE` is a `1`, and `FALSE` is a `0`.
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+```{r, answer05}
+#| include: true
+
+# Sum the TRUEs for is.na()
+acs_df$income |> is.na() |> sum()
+```
+
+In the dataset, `r acs_df$income |> is.na() |> sum()` observations are missing income data.
+
+:::
+
+**[06]** How many observations are missing data on education (`educ`)?
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+```{r, answer06}
+#| include: true
+
+# Sum the TRUEs for is.na()
+acs_df$educ |> is.na() |> sum()
+```
+
+In the dataset, `r acs_df$educ |> is.na() |> sum()` observations are missing education data.
+
+:::
+
+**[07]** If we regress `income` on `educ`, how many observations will be in that regression? Explain your answer.
+
+:::{style="display: default;"}
+[Answer]{.ans} The number of observations in the regression will be `r comma((acs_df$income |> length()) - (acs_df$educ |> is.na() |> sum()))`. This number differs from 10,000 (the total number of observations in the data) because the regression will drop observations that are missing either `income` or `educ`. Here, all of the obsevations are missing due to `educ`.
+
+:::
+
+## Summarize income, education, and age
+
+Time to make a few figures. Simple summaries and visualizations are fantastic ways to get to know the data and to try to figure out any potential issues/features. In this case, they will also provide insights into the distribution of income and education in the United States (in 2023).
+
+**[08]** Calculate the mean and median of the variables `income`, `educ`, `age`.
+
+*Hint:* You can also use the `mean()` and `median()` functions directly. You can use the `summarise_all()` function to calculate the mean and median of all variables in a dataset—and `select()` allows you to select specific variables. 
+
+*Example:* Calculating the mean and standard deviation of `hrs_wk`:
+```{r, example08}
+#| eval: false
+
+# Calculate the mean and standard deviation of 'hrs_wk'
+acs_df |>
+  select(hrs_wk) |>
+  summarise_all(list(mean = mean, stnd_dev = sd), na.rm = TRUE)
+```
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+```{r, answer08}
+#| include: true
+ 
+# The mean and median
+acs_df |>
+  select(income, educ, age) |>
+  summarise_all(list(mean = mean, median = median), na.rm = TRUE)
+```
+
+:::
+
+**[09]** In **[08]**, You should have found that the mean of `income` is much larger than the median. What does this result suggest about the distribution of income in the dataset?
+
+:::{style="display: default;"}
+[Answer]{.ans} The mean is larger than the median, which suggests that the distribution of income is right-skewed: most of the distribution is closer to the origin with a small set of people with high incomes.
+
+:::
+
+**[10]** Create a histogram of `income` to visualize the distribution of income in the dataset.
+
+**Important:** Make sure to label your axes and title your plot.
+
+*Hints:* You have a few options for creating histograms:
+
+- `ggplot2` includes the `geom_histogram()` function;
+- `hist()` is a base `R` function that can create histograms.
+
+Note that both functions allow you to select the number of *bins* in the histogram. `ggplot2` uses either the `bins` or the `binwidth` arguments; `hist()` uses the `breaks` argument.
+
+:::{style="display: default;"}
+[Answer]{.ans} I'm going to go with `ggplot2` today.
+
+```{r, answer10, include = FALSE}
+#| include: true
+#| fig-cap: "Histogram of 2023 income distribution; orange vertical line marks the median."
+
+# Create the histogram of income
+ggplot(data = acs_df, aes(x = income)) +
+geom_histogram(bins = 100, fill = 'slateblue', color = 'grey20') +
+scale_x_continuous('Income', labels = dollar) +
+scale_y_continuous('Number of individuals', labels = comma) +
+geom_vline(xintercept = acs_df$income |> median(), color = 'orange') +
+ggtitle('US distribution of income', 'Source: ACS (2023)') +
+theme_minimal(base_size = 10, base_family = 'Fira Sans Condensed')
+```
+
+:::
+
+**[11]** In a couple (2–3) sentences, explain whether the histogram in **[10]** supports recent concerns/discussions about income inequality in the United States.
+
+:::{style="display: default;"}
+[Answer]{.ans} The histogram supports concerns about income inequality in the US. The distribution is right-skewed: a majority of the sample makes less than $33,000, while small number of individuals earn substantially more.
+
+:::
+
+**[12]** One may be concerned that our sense of income is a bit distorted because we (1) have individuals who are out of the workforce and/or (2) have individuals outside of their "prime working years". Repeat the histogram in **[10]** for individuals who are (1) in the workforce (`i_workforce == 1`) and between the ages of 25 and 64 (`age >= 25 & age <= 64`).
+
+*Hint:* You can use the `filter()` function to select observations that meet certain criteria, e.g., `filter(my_data, i_female == 1)` would filter the dataset `my_data` to the observations for whom `i_female` is equal to the value `1`.
+
+**Important:** Again, don't forget to label your plot's axes. A title would be good too.
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+```{r, answer12}
+#| include: true
+#| fig-cap: "Histogram of 2023 income distribution for labor-force participants aged 25–64; orange vertical line marks the median."
+
+ggplot(
+  data = acs_df |> filter(i_workforce == 1, age >= 25, age <= 64),
+  aes(x = income)
+) +
+geom_histogram(bins = 100, fill = 'slateblue', color = 'grey20') +
+geom_vline(
+  xintercept =
+    filter(acs_df, i_workforce == 1 & age >= 25 & age <= 64)$income |>
+    median(),
+  color = 'orange'
+) +
+scale_x_continuous('Income', labels = dollar) +
+scale_y_continuous('Number of individuals', labels = comma) +
+ggtitle('US distribution of income', 'Source: ACS (2023)') +
+theme_minimal(base_size = 10, base_family = 'Fira Sans Condensed')
+```
+
+:::
+
+**[13]** Did changes the sample in **[12]** change the distribution of income? Briefly explain your answer.
+
+:::{style="display: default;"}
+[Answer]{.ans} Changing the sample somewhat affected the income distribution. The distribution of income is still quite right-skewed. However, less of the population is concentrated at zero, and the median income increased substantively.
+
+:::
+
+## Analyze the returns to education
+
+Throughout the class we've been talking about the returns to education... let's run a few regressions to actually investigate these returns.
+
+**[14]** Let's start with a simple linear regression of the relationship between income and education. In other words: regress `income` on `educ` (with an intercept).
+
+*Note:* Use the full dataset unless otherwise specified.
+
+Generate a summary of the regression (estimated intercept, coefficient, and standard errors). You have a few options here:
+
+- use the `tidy()` function from the `broom` package on the output of the `lm()` function;
+- use the `summary()` function on the output of `lm()`;
+- use `feols()` (from the `fixest` package) to estimate your regression (and possibly use `etable()` to display the results);
+- use the `modelsummary()` function from the `modelsummary` package.
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+```{r, answer15}
+#| include: true
+
+# Estimate the simple linear regression
+est14 = feols(income ~ educ, data = acs_df) |> etable()
+est14
+```
+
+:::
+
+**[15]** Interpret the intercept and coefficient from the regression in **[14]**.
+
+:::{style="display: default;"}
+[Answer]{.ans} The intercept is the estimated income for someone with zero years of education. Thus, we would expect someone with zero years of education to have an income of $-92,914. *Note:* We do not observe anyone in the sample with zero year of education, so we should not interpret this value too literally.
+
+The coefficient provides the estimated increase in income for each additional year of education. In our sample, we estimate that an additional year of education increases income approximately $10,736, holding all else constant.
+
+:::
+
+**[16]** Based upon the regression in **[14]**, what is the estimated income for someone with 12 years of education (i.e., a high school diploma)?
+
+:::{style="display: default;"}
+[Answer]{.ans} The estimated income for someone with 12 years of education is approximately -$92,914.1 + $10,736.0 * 12 + = $35,917.9.
+
+:::
+
+**[17]** Compare your estimate in **[16]** to the mean income for individuals with 12 years of education. Do the linear-regression-based estimates get close to the mean? Should they? Explain your answer.
+
+*Hint:* Remember your friend `filter()` from earlier in problem **[12]**.
+
+:::{style="display: default;"}
+[Answer]{.ans} First let's find the mean income for individuals with exactly 12 years of education.
+
+```{r, answer17}
+#| include: true
+
+# Mean income for individuals with 12 years of education
+acs_df |>
+  filter(educ == 12) |>
+  summarise(mean_income = mean(income)) |>
+  pull() |>
+  dollar()
+```
+
+In our sample, the mean income for an individual with exactly 12 years of education is `r acs_df |> filter(educ == 12) |> summarise(mean(income)) |> pull() |> dollar()`, which is quite close to our regression-based estimate of $35,917.9.
+
+The regression-based estimates should be fairly close to the mean, as the regression is providing the "best-fit" line through the sample data. Of course, the line is trying to fit the whole dataset—not just the individuals with 12 years of education—so it may differ.
+
+:::
+
+**[18]** Earlier we examined how the distribution of income changes when we restrict the sample to individuals in the workforce. Explain how omitting these variables (`i_workforce` and `age`) from the regression in **[14]** might bias the estimated returns to education.
+
+:::{style="display: default;"}
+[Answer]{.ans} Omitting `i_workforce` and `age` from the regression in **[14]** could bias the estimated returns to education. We are back to omitted-variable bias: If these workforce-participation or age affect income *and* correlated with education, then our estimate for the effect of education will be biased. It seems likely that *age* and *workforce* would affect income and correlate with education, so we should be worries about bias in our estimated effect of education.
+
+:::
+
+**[19]** Now add workforce participation (`i_workforce`) and age (`age`) to the regression from **[14]**. Provide a summary (e.g., table) of the regression results.
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+```{r, answer19}
+#| include: true
+
+# Regress income on education, workforce participation, and age
+est19 = feols(income ~ educ + i_workforce + age, data = acs_df)
+# Table of regression results
+est19 |> etable()
+```
+
+:::
+
+**[20]** Do the results in **[19]** suggest that our simple linear regression (in **[14]**) had an issue with omitted variable bias? Explain.
+
+:::{style="display: default;"}
+[Answer]{.ans} The results in **[19]** suggest that our simple linear regression in **[14]** may have had an issue with omitted variable bias. The coefficient on `educ` in the regression in **[19]** declined by approximately 20 percent from the estimate in **[14]**. While this change is not massive, it could be meaningful and suggests that the variables `i_workforce` and `age` were correlated with `educ` and affected income, leading to omitted variable bias in the regression in **[14]**.
+:::
+
+**[21]** One more regression: Add the binary indicator for whether the individual has a bachelor's degree (`deg_bachelors`) to the regression in **[19]**. Provide a summary of the regression results.
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+```{r, answer21}
+#| include: true
+
+# Add indicator for bachelor's degree to the regression
+est21 = feols(income ~ educ + i_workforce + age + deg_bachelors, data = acs_df)
+# Table of regression results
+est21 |> etable()
+```
+
+:::
+
+
+**[22]** Why do you think the returns to education changed so much when we included the binary indicator for a bachelor's degree in the regression?
+
+:::{style="display: default;"}
+[Answer]{.ans} The simplest explanation is once again that we had omitted variable bias: the binary indicator for a bachelor's degree is likely correlated with education and income, so including it in the regression helps to control for some of the omitted variable bias that was present in the regression in **[19]**.
+
+:::
+
+## Shifting gears: *Who* graduates?
+
+The previous results suggest that maybe there's something special about having a bachelor's degree. Let's explore this a bit more.
+
+**[21]** First off, what share of the sample has a bachelor's degree?
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+```{r, answer21b}
+#| include: true
+
+# Share of the sample with a bachelor's degree
+acs_df$deg_bachelors |> mean() |> percent(.1)
+```
+
+In the sample, `r acs_df$deg_bachelors |> mean() |> percent(.1)` of individuals have a bachelor's degree.
+
+:::
+
+**[22]** Now regress the indicator for whether the individual has a bachelor's degree (`deg_bachelors`) on age (`age`), the indicator for whether the individual is female (`i_female`), and the interaction between age and female. 
+Provide a summary of the regression results.
+
+*Hint:* To take the interaction between two variables, you can use the `:` operator in the regression formula. For example, `lm(y ~ x1 + x2 + x1:x2)` would include the interaction between `x1` and `x2`.
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+```{r, answer22b}
+#| include: true
+
+# Regression
+est22 = feols(deg_bachelors ~ age + i_female + age:i_female, data = acs_df)
+# Table of regression results
+est22 |> etable()
+```
+
+:::
+
+**[23]** Interpret the intercept and each of the coefficients from the regression in **[22]**.
+
+*Hint:* Remember that a regression with a binary dependent variable can be interpreted as modeling the probability that the dependent variable is equal to one.
+
+:::{style="display: default;"}
+[Answer]{.ans}
+
+- The intercept (0.2081) is the estimated probability that a zero-year-old non-female individual has a bachelor's degree. This is not a meaningful value, as we do not observe any zero-year-olds in the sample.
+- The coefficient on `i_female` (0.2232) is the estimated difference in the probability of having a bachelor's degree between zero-year-old females and zero-year-old non-females. While we do not observe zero-year-old individuals in this sample, this coefficient suggests younger females are more likely to have college degrees than younger non-females, though we need to take the `age` effects into account before we make any stronger statements. 
+- The coefficient on `age` (0.0021) is the estimated increase in the probability of having a bachelor's degree for each additional year of age for non-females. This coefficient suggests that the probability of having a bachelor's degree increases with age for non-females.
+- The coefficient on the interaction term (-0.0037) is the estimated difference in the effect of age on the probability of having a bachelor's degree *between females and non-females*. This coefficient suggests the probability of graduating increases much less for females than for non-females (in fact, this coefficient suggets the probability of a bachelor's degree decreases with age for females).
+
+:::
+
+**[24]** Based on the regression in **[23]**, what is the probability that a 25-year-old female has a bachelor's degree? What about a 25-year-old male?
+
+:::{style="display: default;"}
+[Answer]{.ans} First recall the model that we estimated:
+$$
+  \text{Pr}(\text{Bachelor's degree}) = \beta_0 + \beta_1 \text{Age} + \beta_2 \text{Female} + \beta_3 \text{Age} \times \text{Female} u_i
+$$
+
+Plugging in the estimated coefficients, `25` for age, and `1` for female, the estimated probability is approximately `0.2081 + 0.0021 * 25 + 0.2232 * 1 + (-0.0037) * 25 * 1`, which is approximately `r round(0.2081 + 0.0021 * 25 + 0.2232 * 1 + (-0.0037) * 25 * 1, 4)`.
+
+:::
+
+## Wrap up
+
+**[25]** What are your main takeaways/insights about income and education from this problem set and its data? Explain your answer using figures/regressions from above and any additional analyses you think are relevant.
+
+:::{style="display: default;"}
+[Answer]{.ans} Pretty open-ended question here. I'm looking for a thoughtful response that synthesizes the results from the problem set. You might discuss the distribution of income, the returns to education, the importance of controlling for omitted variable bias, and the relationship between education and the probability of having a bachelor's degree. You could also discuss the importance of controlling for omitted variable bias in the context of the returns to education.
+
+:::
