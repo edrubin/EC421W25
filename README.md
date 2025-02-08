@@ -10,7 +10,7 @@ For information on the course specifics, please see the [syllabus](https://raw.g
 
 **Problem Set 0: Review**
 <br>Due: Tuesday, 28 January 2025 by 11:59 PM. Submit via [Canvas](https://canvas.uoregon.edu/courses/254921/assignments/1793531).
-<br>Files: [assignment](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/000/000-questions.html) | [data](https://github.com/edrubin/EC421W25/tree/master/problem-sets/000/data-acs.csv)
+<br>Files: [assignment](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/000/000-questions.html) | [data](https://github.com/edrubin/EC421W25/tree/master/problem-sets/000/data-acs.csv) | [solutions](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/000/000-solutions.html)
 
 **Problem Set 1: Heteroskedasticity, Clustering, and OLS Assumptions**
 <br>Due: Saturday, 08 February 2025 by 11:59 PM. Submit via [Canvas](https://canvas.uoregon.edu/courses/254921/assignments/1793531).
