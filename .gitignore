@@ -1,6 +1,6 @@
 
 # Temporary holds: Lecture
-notes/0[7-9]*
+notes/0[9-9]*
 notes/1*
 
 # Notes cache
@@ -20,9 +20,13 @@ problem-sets/001/data-raw*
 problem-sets/001/clean-data.R
 problem-sets/001/001-questions.qmd
 problem-sets/001/ed.scss
+# PS 2
+problem-sets/002/data-raw*
+problem-sets/002/clean-data.R
+problem-sets/002/002-questions.qmd
+problem-sets/002/ed.scss
 
 # Problem sets: Future
-problem-sets/002*
 problem-sets/003*
 problem-sets/004*
 
