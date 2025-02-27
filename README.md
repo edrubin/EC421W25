@@ -16,6 +16,10 @@ For information on the course specifics, please see the [syllabus](https://raw.g
 <br>Due: Saturday, 08 February 2025 by 11:59 PM. Submit via [Canvas](https://canvas.uoregon.edu/courses/254921/assignments/1793531).
 <br>Files: [assignment](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/001/001-questions.html) | [data](https://github.com/edrubin/EC421W25/tree/master/problem-sets/001/data-acs.csv)
 
+**Problem Set 2: Time-series data, analyses, and nonstationarity**
+<br>Due: Sunday, 02 March 2025 by 11:59 PM. Submit via [Canvas](https://canvas.uoregon.edu/courses/254921/assignments/1804308).
+<br>Files: [assignment](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/002/002-questions.html) | [data](https://github.com/edrubin/EC421W25/tree/master/problem-sets/002/data-births.csv)
+
 *Note:* You can use the box in the top right corner with the `⋯` to download the files. (You can also use the button with the download arrow.)
 
 ## Midterm prep materials
