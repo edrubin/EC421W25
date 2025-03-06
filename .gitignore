@@ -1,7 +1,5 @@
 
 # Temporary holds: Lecture
-notes/0[9-9]*
-notes/1*
 
 # Notes cache
 notes/*/slides_cache/*
