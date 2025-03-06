@@ -55,7 +55,7 @@ In case you're interested, I created the slides with [`xaringan`](https://github
 
 8. [Autocorrelated disturbances](https://raw.githack.com/edrubin/EC421W25/master/notes/08-autocorrelation/slides.html)<br>Implications, testing, and estimation. Also: introduction `ggplot2` and user-defined functions. <br> [PDF](https://raw.githack.com/edrubin/EC421W25/master/notes/08-autocorrelation/slides.pdf) | [.Rmd](https://github.com/edrubin/EC421W25/blob/master/notes/08-autocorrelation/slides.Rmd)
 
-9. [Nonstationarity](https://raw.githack.com/edrubin/EC421W25/master/notes/09-nonstationarity/slides.html)<br>Introduciton, implications for OLS, testing, and estimation. Also: in-class exercise for model selection. <br> [PDF](https://raw.githack.com/edrubin/EC421W25/master/notes/09-nonstationarity/slides.pdf) | [.Rmd](https://github.com/edrubin/EC421W25/blob/master/notes/09-nonstationarity/slides.Rmd)
+9. [Nonstationarity](https://raw.githack.com/edrubin/EC421W25/master/notes/09-nonstationarity/09-nonstationarity.html)<br>Introduciton, implications for OLS, testing, and estimation. Also: in-class exercise for model selection. <br> [PDF](https://raw.githack.com/edrubin/EC421W25/master/notes/09-nonstationarity/09-nonstationarity.pdf) | [.Rmd](https://github.com/edrubin/EC421W25/blob/master/notes/09-nonstationarity/09-nonstationarity.Rmd)
 
 10. [Causality](https://raw.githack.com/edrubin/EC421W25/master/notes/10-causality/slides.html)<br>Introduction to causality and the Neymam-Rubin causal model. Also: Recap of in-class model-selection exercise. <br> [PDF](https://raw.githack.com/edrubin/EC421W25/master/notes/10-causality/slides.pdf) | [.Rmd](https://github.com/edrubin/EC421W25/blob/master/notes/10-causality/slides.Rmd)
 
