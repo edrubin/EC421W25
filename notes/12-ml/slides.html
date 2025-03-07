@@ -4,10 +4,10 @@
     <title>(Some of) Machine Learning</title>
     <meta charset="utf-8" />
     <meta name="author" content="Edward Rubin" />
-    <script src="12-ml_files/header-attrs-2.14/header-attrs.js"></script>
-    <link href="12-ml_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="12-ml_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
-    <link href="12-ml_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="slides_files/header-attrs-2.28/header-attrs.js"></script>
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
     <link rel="stylesheet" href="my-css.css" type="text/css" />
   </head>
   <body>
@@ -44,17 +44,13 @@ name: schedule
 
 # Schedule
 
-## Last time
-
-Resampling methods
-
 ## Today
 
 A one-lecture introduction to machine-learning methods
 
 ## Upcoming
 
-The end is near—as are the last problem set and the final.
+The end is near.
 
 ---
 class: inverse, middle
@@ -125,27 +121,27 @@ exclude: true
 name: graph-example
 
 .white[blah]
-&lt;img src="12-ml_files/figure-html/plot points-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot points-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 .pink[Linear regression]
-&lt;img src="12-ml_files/figure-html/plot ols-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot ols-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 .pink[Linear regression], .turquoise[linear regression] `\(\color{#20B2AA}{\left( x^4 \right)}\)`
-&lt;img src="12-ml_files/figure-html/plot ols poly-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot ols poly-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 .pink[Linear regression], .turquoise[linear regression] `\(\color{#20B2AA}{\left( x^4 \right)}\)`, .purple[KNN (100)]
-&lt;img src="12-ml_files/figure-html/plot knn-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot knn-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 .pink[Linear regression], .turquoise[linear regression] `\(\color{#20B2AA}{\left( x^4 \right)}\)`, .purple[KNN (100)], .orange[KNN (10)]
-&lt;img src="12-ml_files/figure-html/plot knn more-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot knn more-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 .pink[Linear regression], .turquoise[linear regression] `\(\color{#20B2AA}{\left( x^4 \right)}\)`, .purple[KNN (100)], .orange[KNN (10)], .slate[random forest]
-&lt;img src="12-ml_files/figure-html/plot rf-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot rf-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 class: clear, middle
@@ -493,7 +489,7 @@ class: clear, middle
 .hi[U-shaped test MSE] with respect to model flexibility (KNN here).
 &lt;br&gt;Increases in variance eventually overcome reductions in (squared) bias.
 
-&lt;img src="12-ml_files/figure-html/review-bias-variance-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/review-bias-variance-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 layout: false
@@ -549,21 +545,21 @@ To estimate the .hi-pink[test error], we can .it[hold out] a subset of our .hi-p
 
 ---
 
-&lt;img src="12-ml_files/figure-html/plot-validation-set-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-validation-set-1.svg" style="display: block; margin: auto;" /&gt;
 
 .col-left[.hi-purple[Initial training set]]
 
 
 ---
 
-&lt;img src="12-ml_files/figure-html/plot-validation-set-2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-validation-set-2-1.svg" style="display: block; margin: auto;" /&gt;
 
 .col-left[.hi-slate[Validation (sub)set]]
 .col-right[.hi-purple[Training set:] .purple[Model training]]
 
 ---
 
-&lt;img src="12-ml_files/figure-html/plot-validation-set-3-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-validation-set-3-1.svg" style="display: block; margin: auto;" /&gt;
 
 .col-left[.hi-slate[Validation (sub)set]]
 .col-right[.hi-purple[Training set:] .purple[Model training]]
@@ -601,13 +597,13 @@ layout: false
 class: clear, middle
 
 .b[Validation MSE] for 10 different validation samples
-&lt;img src="12-ml_files/figure-html/plot-vset-sim-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-vset-sim-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 layout: false
 class: clear, middle
 
 .b[True test MSE] compared to validation-set estimates
-&lt;img src="12-ml_files/figure-html/plot-vset-sim-2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-vset-sim-2-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 # Hold-out methods
@@ -659,32 +655,32 @@ exclude: true
 
 
 ---
-&lt;img src="12-ml_files/figure-html/plot-loocv-1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-loocv-1-1.svg" style="display: block; margin: auto;" /&gt;
 
 .slate[Observation 1's turn for validation produces MSE.sub[1]].
 
 ---
-&lt;img src="12-ml_files/figure-html/plot-loocv-2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-loocv-2-1.svg" style="display: block; margin: auto;" /&gt;
 
 .slate[Observation 2's turn for validation produces MSE.sub[2]].
 
 ---
-&lt;img src="12-ml_files/figure-html/plot-loocv-3-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-loocv-3-1.svg" style="display: block; margin: auto;" /&gt;
 
 .slate[Observation 3's turn for validation produces MSE.sub[3]].
 
 ---
-&lt;img src="12-ml_files/figure-html/plot-loocv-4-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-loocv-4-1.svg" style="display: block; margin: auto;" /&gt;
 
 .slate[Observation 4's turn for validation produces MSE.sub[4]].
 
 ---
-&lt;img src="12-ml_files/figure-html/plot-loocv-5-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-loocv-5-1.svg" style="display: block; margin: auto;" /&gt;
 
 .slate[Observation 5's turn for validation produces MSE.sub[5]].
 
 ---
-&lt;img src="12-ml_files/figure-html/plot-loocv-n-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-loocv-n-1.svg" style="display: block; margin: auto;" /&gt;
 
 .slate[Observation n's turn for validation produces MSE.sub[n]].
 
@@ -724,7 +720,7 @@ layout: false
 class: clear, middle
 
 .b[True test MSE] and .hi-orange[LOOCV MSE] compared to .hi-purple[validation-set estimates]
-&lt;img src="12-ml_files/figure-html/plot-loocv-mse-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-loocv-mse-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 layout: true
 # Hold-out methods
@@ -776,42 +772,42 @@ $$
 
 ---
 
-&lt;img src="12-ml_files/figure-html/plot-cvk-0a-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-cvk-0a-1.svg" style="display: block; margin: auto;" /&gt;
 
 Our `\(k=\)` 5 folds.
 ---
 
-&lt;img src="12-ml_files/figure-html/plot-cvk-0b-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-cvk-0b-1.svg" style="display: block; margin: auto;" /&gt;
 
 Each fold takes a turn at .hi-slate[validation]. The other `\(k-1\)` folds .hi-purple[train].
 
 ---
 
-&lt;img src="12-ml_files/figure-html/plot-cvk-1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-cvk-1-1.svg" style="display: block; margin: auto;" /&gt;
 
 For `\(k=5\)`, fold number `\(1\)` as the .hi-slate[validation set] produces MSE.sub[k=1].
 
 ---
 
-&lt;img src="12-ml_files/figure-html/plot-cvk-2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-cvk-2-1.svg" style="display: block; margin: auto;" /&gt;
 
 For `\(k=5\)`, fold number `\(2\)` as the .hi-slate[validation set] produces MSE.sub[k=2].
 
 ---
 
-&lt;img src="12-ml_files/figure-html/plot-cvk-3-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-cvk-3-1.svg" style="display: block; margin: auto;" /&gt;
 
 For `\(k=5\)`, fold number `\(3\)` as the .hi-slate[validation set] produces MSE.sub[k=3].
 
 ---
 
-&lt;img src="12-ml_files/figure-html/plot-cvk-4-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-cvk-4-1.svg" style="display: block; margin: auto;" /&gt;
 
 For `\(k=5\)`, fold number `\(4\)` as the .hi-slate[validation set] produces MSE.sub[k=4].
 
 ---
 
-&lt;img src="12-ml_files/figure-html/plot-cvk-5-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-cvk-5-1.svg" style="display: block; margin: auto;" /&gt;
 
 For `\(k=5\)`, fold number `\(5\)` as the .hi-slate[validation set] produces MSE.sub[k=5].
 
@@ -826,7 +822,7 @@ layout: false
 class: clear, middle
 
 .b[Test MSE] .it[vs.] estimates: .orange[LOOCV], .pink[5-fold CV] (20x), and .purple[validation set] (10x)
-&lt;img src="12-ml_files/figure-html/plot-cv-mse-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-cv-mse-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 layout: false
@@ -1078,7 +1074,7 @@ exclude: true
 
 
 
-```r
+``` r
 # Standardize all variables except 'balan ce'
 credit_stnd = preProcess(
   # Do not process the outcome 'balance'
@@ -1093,7 +1089,7 @@ credit_stnd %&lt;&gt;% predict(newdata = credit_dt)
 
 
 
-```r
+``` r
 # Define our lambdas
 lambdas = 10^seq(from = 5, to = -2, length = 100)
 # Cross validation
@@ -1114,7 +1110,7 @@ layout: false
 class: clear, middle
 
 .b[Ridge regression coefficents] for `\(\lambda\)` between 0.01 and 100,000
-&lt;img src="12-ml_files/figure-html/plot-ridge-glmnet-2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-ridge-glmnet-2-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 layout: false
 class: clear, middle
@@ -1122,7 +1118,7 @@ class: clear, middle
 
 
 .b[Lasso coefficents] for `\(\lambda\)` between 0.01 and 100,000
-&lt;img src="12-ml_files/figure-html/plot-lasso-glmnet-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-lasso-glmnet-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 # Machine learning
@@ -1196,51 +1192,51 @@ Let's see how the tree works
 
 
 
-&lt;img src="12-ml_files/figure-html/plot-raw-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-raw-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
 The .hi-pink[first partition] splits balance at $1,800.
 
-&lt;img src="12-ml_files/figure-html/plot-split1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-split1-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
 The .hi-pink[second partition] splits balance at $1,972, (.it[conditional on bal. &gt; $1,800]).
 
-&lt;img src="12-ml_files/figure-html/plot-split2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-split2-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
 The .hi-pink[third partition] splits income at $27K .b[for] bal. between $1,800 and $1,972.
 
-&lt;img src="12-ml_files/figure-html/plot-split3-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-split3-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
 These three partitions give us four .b[regions]...
 
-&lt;img src="12-ml_files/figure-html/plot-split3b-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-split3b-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 
 .b[Predictions] cover each region (_e.g._, using the region's most common class).
 
-&lt;img src="12-ml_files/figure-html/plot-split3c-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-split3c-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 
 .b[Predictions] cover each region (_e.g._, using the region's most common class).
 
-&lt;img src="12-ml_files/figure-html/plot-split3d-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-split3d-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 
 .b[Predictions] cover each region (_e.g._, using the region's most common class).
 
-&lt;img src="12-ml_files/figure-html/plot-split3e-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-split3e-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 
 .b[Predictions] cover each region (_e.g._, using the region's most common class).
 
-&lt;img src="12-ml_files/figure-html/plot-split3f-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/plot-split3f-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 layout: false
@@ -1329,15 +1325,15 @@ layout: true
 
 .ex[Example] Consider the dataset
 
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:data-ex-split">
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:data-ex-split">
 <col><col><col><col><col><tr>
-<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">i</th><th style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(255, 255, 255);">pred.</span></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">y</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[1]</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[2]</th></tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">i</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(255, 255, 255);">pred.</span></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">y</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[1]</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[2]</th></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">4</td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">4</td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">8</td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2</td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">8</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2</td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6</td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6</td></tr>
 </table>
 
 
@@ -1353,15 +1349,15 @@ With just three observations, each variable only has two actual splits..super[�
 
 One possible split: x.sub[1] at 2, which yields .purple[(.b[1]) x.sub[1] &lt; 2] .it[vs.] .pink[(.b[2]) x.sub[1] ≥ 2]
 
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:ex-split1">
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:ex-split1">
 <col><col><col><col><col><tr>
-<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">i</th><th style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(255, 255, 255);">pred.</span></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">y</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[1]</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[2]</th></tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">i</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(255, 255, 255);">pred.</span></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">y</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[1]</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[2]</th></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">1</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">1</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">4</td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">1</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">1</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">4</td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">2</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">7</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2</td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">2</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">7</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2</td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">7</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">5</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6</td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(255, 255, 255);">7</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">5</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6</td></tr>
 </table>
 
 
@@ -1369,15 +1365,15 @@ One possible split: x.sub[1] at 2, which yields .purple[(.b[1]) x.sub[1] &lt; 2]
 
 One possible split: x.sub[1] at 2, which yields .purple[(.b[1]) x.sub[1] &lt; 2] .it[vs.] .pink[(.b[2]) x.sub[1] ≥ 2]
 
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:ex-split1b">
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:ex-split1b">
 <col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">i</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">pred.</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">y</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[1]</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[2]</th></tr>
 <tr>
 <td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">1</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(106, 90, 205);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">1</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">4</td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">2</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(230, 65, 115);">7</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2</td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">2</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(230, 65, 115);">7</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2</td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(230, 65, 115);">7</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">5</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6</td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(230, 65, 115);">7</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">5</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6</td></tr>
 </table>
 
 
@@ -1393,15 +1389,15 @@ This split yields an RSS of .purple[0.super[2]] + .pink[1.super[2]] + .pink[(-1)
 
 An alternative split: x.sub[1] at 4, which yields .purple[(.b[1]) x.sub[1] &lt; 4] .it[vs.] .pink[(.b[2]) x.sub[1] ≥ 4]
 
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:ex-split2">
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:ex-split2">
 <col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">i</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">pred.</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">y</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[1]</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[2]</th></tr>
 <tr>
 <td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">1</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(106, 90, 205);">4</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">1</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">4</td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">2</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(106, 90, 205);">4</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2</td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">2</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(106, 90, 205);">4</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2</td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">5</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6</td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">5</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6</td></tr>
 </table>
 
 
@@ -1415,15 +1411,15 @@ This split yields an RSS of .purple[(-4).super[2]] + .purple[4.super[2]] + .pink
 
 Another split: x.sub[2] at 3, which yields .purple[(.b[1]) x.sub[1] &lt; 3] .it[vs.] .pink[(.b[2]) x.sub[1] ≥ 3]
 
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:ex-split3">
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:ex-split3">
 <col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">i</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">pred.</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">y</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[1]</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[2]</th></tr>
 <tr>
 <td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">1</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">4</span></td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">2</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(106, 90, 205);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">2</span></td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">2</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(106, 90, 205);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">2</span></td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td></tr>
 </table>
 
 
@@ -1433,15 +1429,15 @@ This split yields an RSS of .pink[(-3).super[2]] + .purple[0.super[2]] + .pink[3
 
 Final split: x.sub[2] at 5, which yields .purple[(.b[1]) x.sub[1] &lt; 5] .it[vs.] .pink[(.b[2]) x.sub[1] ≥ 5]
 
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:ex-split4">
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;  " id="tab:ex-split4">
 <col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">i</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">pred.</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">y</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[1]</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">x.sub[2]</th></tr>
 <tr>
 <td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">1</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(106, 90, 205);">4</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">0</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">4</span></td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">2</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(106, 90, 205);">4</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">2</span></td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">2</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(106, 90, 205);">4</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">8</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(106, 90, 205);">2</span></td></tr>
 <tr>
-<td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td></tr>
+<td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">3</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">5</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"><span style="color: rgb(230, 65, 115);">6</span></td></tr>
 </table>
 
 

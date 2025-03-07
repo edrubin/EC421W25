@@ -4,12 +4,12 @@
     <title>Instrumental Variables</title>
     <meta charset="utf-8" />
     <meta name="author" content="Edward Rubin" />
-    <script src="11-iv_files/header-attrs-2.14/header-attrs.js"></script>
-    <link href="11-iv_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="11-iv_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
-    <link href="11-iv_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
-    <script src="11-iv_files/kePrint-0.0.1/kePrint.js"></script>
-    <link href="11-iv_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <script src="slides_files/header-attrs-2.28/header-attrs.js"></script>
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="slides_files/kePrint-0.0.1/kePrint.js"></script>
+    <link href="slides_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="my-css.css" type="text/css" />
   </head>
   <body>
@@ -47,10 +47,6 @@ Causality
 
 - Review: Causality
 - New: Instrumental variables
-
-## Upcoming
-
-Stay tuned on Canvas
 
 ---
 layout: false
@@ -670,22 +666,22 @@ layout: false
 class:clear
 name: venn
 
-&lt;img src="11-iv_files/figure-html/venn_iv-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/venn_iv-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 class: clear
 count: false
 
-&lt;img src="11-iv_files/figure-html/venn_iv_endog-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/venn_iv_endog-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 class: clear
 count: false
 
-&lt;img src="11-iv_files/figure-html/venn_iv_irrelevant-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/venn_iv_irrelevant-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 class: clear
 count: false
 
-&lt;img src="11-iv_files/figure-html/venn_iv_endog2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/venn_iv_endog2-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 layout: false
 # Venn diagram explanation
@@ -732,7 +728,7 @@ Back to our age-old battle to estimate the returns to education.
 #&gt;  8  1000        12            11            12
 #&gt;  9   930        18            14            13
 #&gt; 10   900        15            12            12
-#&gt; # … with 712 more rows
+#&gt; # ℹ 712 more rows
 ```
 ---
 
@@ -765,11 +761,11 @@ $$
    &lt;td style="text-align:left;background-color: white !important;"&gt; 0.0481 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; Education &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 58.594 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 6.439 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 9.10 &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; Education &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 58.594 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 6.439 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 9.10 &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -816,11 +812,11 @@ $$
   &lt;/td&gt;
 &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; Mother's Education &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 0.294 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 0.027 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 10.75 &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; Mother's Education &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 0.294 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 0.027 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 10.75 &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -834,14 +830,14 @@ layout: false
 # Instrumental variables
 ## Visualizing the first stage
 
-&lt;img src="11-iv_files/figure-html/first_stage_plot-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/first_stage_plot-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 count: false
 
 # Instrumental variables
 ## Visualizing the first stage
 
-&lt;img src="11-iv_files/figure-html/first_stage_plot2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/first_stage_plot2-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 # Instrumental variables
 ## Exogeneity
@@ -898,11 +894,11 @@ $$
   &lt;/td&gt;
 &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; Mother's Education &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 31.81 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 5.24 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 6.07 &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; Mother's Education &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 31.81 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 5.24 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 6.07 &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -962,7 +958,7 @@ This new function `iv_robust` works very similar to our good friend `lm`:
 In practice...
 
 
-```r
+``` r
 # Estimate our IV regression
 iv_est &lt;- iv_robust(wage ~ education | education_mom, data = wage_df)
 ```
@@ -986,11 +982,11 @@ iv_est &lt;- iv_robust(wage ~ education | education_mom, data = wage_df)
    &lt;td style="text-align:left;background-color: white !important;"&gt; 0.0271 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; Education &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 108.214 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 16.810 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 6.44 &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; Education &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 108.214 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 16.810 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 6.44 &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1106,7 +1102,7 @@ $$
 $$
 
 
-```r
+``` r
 stage1 &lt;- lm(education ~ education_mom + education_dad, wage_df)
 ```
 
@@ -1131,19 +1127,19 @@ stage1 &lt;- lm(education ~ education_mom + education_dad, wage_df)
   &lt;/td&gt;
 &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; Mother's Education &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 0.149 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 0.032 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 4.62 &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; Mother's Education &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 0.149 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 0.032 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 4.62 &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 
   &lt;/td&gt;
 &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; Father's Education &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 0.216 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 0.028 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 7.84 &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #e64173 !important;"&gt; 
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; Father's Education &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 0.216 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 0.028 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 7.84 &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(230, 65, 115, 255) !important;"&gt; 
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1166,7 +1162,7 @@ $$
 --
 
 
-```r
+``` r
 # Add fitted values from first stage
 wage_df$education_hat &lt;- stage1$fitted.values
 ```
@@ -1188,7 +1184,7 @@ $$
 $$
 
 
-```r
+``` r
 stage2 &lt;- lm(wage ~ education_hat, wage_df)
 ```
 
@@ -1212,11 +1208,11 @@ stage2 &lt;- lm(wage ~ education_hat, wage_df)
    &lt;td style="text-align:left;background-color: white !important;"&gt; 0.022 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; Fitted Education &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 104.789 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 14.462 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 7.25 &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; Fitted Education &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 104.789 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 14.462 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 7.25 &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1245,11 +1241,11 @@ class: clear
    &lt;td style="text-align:left;background-color: white !important;"&gt; 0.0481 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; Education &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 58.594 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 6.439 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 9.10 &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; Education &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 58.594 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 6.439 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 9.10 &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1303,11 +1299,11 @@ class: clear
    &lt;td style="text-align:left;background-color: white !important;"&gt; 0.022 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #8bb174 !important;"&gt; Education &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #8bb174 !important;"&gt; 104.789 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #8bb174 !important;"&gt; 14.462 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #8bb174 !important;"&gt; 7.25 &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #8bb174 !important;"&gt; 
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(139, 177, 116, 255) !important;"&gt; Education &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(139, 177, 116, 255) !important;"&gt; 104.789 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(139, 177, 116, 255) !important;"&gt; 14.462 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(139, 177, 116, 255) !important;"&gt; 7.25 &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(139, 177, 116, 255) !important;"&gt; 
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1331,7 +1327,7 @@ In our case, we have
 - two instruments (`z`) (.pink[parents' educations])
 
 
-```r
+``` r
 iv_robust(wage ~ education | education_mom + education_dad, data = wage_df)
 ```
 
@@ -1354,11 +1350,11 @@ iv_robust(wage ~ education | education_mom + education_dad, data = wage_df)
    &lt;td style="text-align:left;background-color: white !important;"&gt; 0.0233 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; Education, fitted &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 104.789 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 14.852 &lt;/td&gt;
-   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 7.06 &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: #6A5ACD !important;"&gt; 
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; Education, fitted &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 104.789 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 14.852 &lt;/td&gt;
+   &lt;td style="text-align:right;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 7.06 &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: white !important;font-weight: bold;color: rgba(106, 90, 205, 255) !important;"&gt; 
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;

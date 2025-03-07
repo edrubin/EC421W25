@@ -11,6 +11,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+
 ---
 class: inverse, middle
 
@@ -127,11 +128,7 @@ Autocorrelation
 
 ## Today
 
-Brief introduction to nonstationarity
-
-## Upcoming
-
-Next assignment soon.
+A brief introduction to nonstationarity
 
 ---
 layout: false

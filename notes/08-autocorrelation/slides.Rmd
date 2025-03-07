@@ -130,10 +130,6 @@ name: schedule
 
 Autocorrelation
 
-## Upcoming
-
-Assignment 3 soon.
-
 ---
 layout: true
 # .mono[R] showcase

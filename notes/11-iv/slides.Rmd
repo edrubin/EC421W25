@@ -100,10 +100,6 @@ Causality
 - Review: Causality
 - New: Instrumental variables
 
-## Upcoming
-
-Stay tuned on Canvas
-
 ---
 layout: false
 class: inverse, middle

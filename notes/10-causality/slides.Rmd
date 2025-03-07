@@ -130,10 +130,6 @@ Autocorrelation and nonstationarity
 
 Causality
 
-## Upcoming
-
-**Assignments** 
-
 ---
 layout: true
 # Causality
