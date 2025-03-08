@@ -22,7 +22,11 @@ For information on the course specifics, please see the [syllabus](https://raw.g
 
 *Note:* You can use the box in the top right corner with the `⋯` to download the files. (You can also use the button with the download arrow.)
 
-## Midterm prep materials
+## Midterm materials
+
+A blank copy of the midterm is available [here](midterm/exam/exam-inclass.pdf).
+
+A key is available [here](midterm/exam/exam-inclass-key.pdf).
 
 In addition to the past exams linked below, here are some additional materials to help you prepare for the midterm:
 
