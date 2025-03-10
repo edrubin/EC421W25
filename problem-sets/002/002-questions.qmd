@@ -1,0 +1,111 @@
+---
+title: "Problem Set 2: Time Series"
+subtitle: "EC 421: Introduction to Econometrics"
+author: "Edward Rubin"
+format:
+  html:
+    toc: true
+    number-sections: true
+    self-contained: true
+    theme:
+    - cosmo
+    - my.scss
+editor:
+  render-on-save: true
+---
+
+## Instructions
+
+[**Due**]{style="text-decoration: underline;"} Upload your answer on [Canvas](https://canvas.uoregon.edu/) *before* midnight on Sunday, 02 March 2025.
+
+[**Important**]{style="text-decoration: underline;"} You must submit your answers as an HTML or PDF file, built from an RMarkdown (`.RMD`) or Quarto (`.qmd`) file. **Do not submit the `.RMD` or `.qmd` file.** You will not receive credit for it.
+
+If we ask you to create a figure or run a regression, then the figure or the regression results should be in the document that you submit (not just the code—we want the actual figure or regression output with coefficients, standard errors, *etc.*).
+
+[**Integrity**]{style="text-decoration: underline;"} If you are suspected of cheating, then you will receive a zero—for the assignment and possibly for the course. We may report you to the dean. **Cheating includes copying from your classmates, from the internet, and from previous assignments.**
+
+[**README!**]{style="text-decoration: underline;"} It's important that you understand the variables for this problem set. The data for this problem set come from two main sources:
+
+1. **annual US births** from the [*Human Mortality Database*](https://www.mortality.org/Country/Country?cntr=USA);
+2. **[real GDP](https://fred.stlouisfed.org/series/GDPCA)** (2017 dollars), **[CPI](https://fred.stlouisfed.org/series/CPIAUCSL)** (indexed to 1982–1984)**, and [**US population**](https://fred.stlouisfed.org/series/POP) from the St. Louis Federal Reserve's [FRED database](https://fred.stlouisfed.org/series/).
+
+The table below describes each variable in the dataset.
+
+| Variable name      | Variable description |
+|:-------------------|:---------------------|
+| `year`      | The year of the observations (*t*). |
+| `births`    | The number of births (in the US) in the given year. |
+| `pop`       | Estimated US population in the given year. |
+| `gdp`       | Real US [GDP](https://fred.stlouisfed.org/series/GDPCA) (in billions of 2017 dollars)|
+| `cpi`       | [Consumer price index](https://fred.stlouisfed.org/series/CPIAUCSL) (CPI), indexed 1982-1984=100 |
+| `inf`       | The inflation rate (based upon the CPI) in the given year (in percentage points, i.e., `7.67` is 7.67%). |
+
+: Variable names and descriptions
+
+[**Objective**]{style="text-decoration: underline;"} This problem set has three main purposes: (1) reinforce what you learned about time-series data and its analysis (2) continue building your .mono[R] toolset; (3) develop your intuition on how to analyze "real-world" data.
+
+## Load the data
+
+**[01]** Load your `R` packages and the dataset (`data-ps2.csv`). You will probably want `tidyverse` and `here`.
+
+**[02]** Which years do the data cover?
+
+Note that (1) each row represents a year and (2) the data are already sorted by year.
+
+## Time-series plots
+
+**[03]** Time for some time-series plots. Create "classic" time-series plots for the following four variables: (1) births, (2) population, (3) GDP, (4) inflation.
+
+**[04]** For each of the four variables and their time-series plots, describe whether the variable appears to be autocorrelated. If the variable does appear to be autocorrelated, describe whether it is positive or negative and how strong the autocorrelation appears to be.
+
+**[05]** When thinking about births, it's common to look at the birth rate (births per 1,000 people). Create a new variable, `birth_rate`, that is the number of births per 1,000 people (`births / (pop / 1000)` which is the same as `births / pop * 1000`).
+
+Now create a time-series plot for `birth_rate`.
+
+**[06]** Does the trend in the birth rate appear to differ from the trend of births? Which figure is more informative?
+
+**[07]** Similar to the birth rate, we often want to think about *GDP per capita* (not just GDP). Create a new variable, `gdppc`, that divides GDP by the population. Keep in mind that our GDP variable is measured in billions, so you will want to multiple by 1 billion, i.e., `gdp / pop * 1e9`.
+
+Now create a time-series plot for `gdppc`.
+
+## Time-series analyses
+
+**[08]** Time for your first time-series regression. Let's start easy with a static model: Regress the annual birth rate (your `birth_rate` variable) on the year's GDP per capita (`gdppc`) and the inflation rate (`inf`). Report your results (don't interpret quite yet).
+
+**[09]** Now interpret the results from your regression in **[08]**. What do the coefficients on `gdppc` and `inf` suggest about the relationship between GDP per capita, inflation, and the birth rate?
+
+**[10]** Do the signs of the coefficients on `gdppc` and `inf` make sense? Why or why not?
+
+**[11]** Now add CPI to the static regression in **[08]**. Report your results (don't interpret them).
+
+**[12]** Did including CPI meaningfully change the results from the regression in **[08]**? Explain your answer—particularly with omitted-variable bias in mind.
+
+**[13]** What assumptions do we need for OLS to be unbiased in **[08]** and **[12]**? Are the assumptions realistic in this setting? Explain your answer *specific to this setting*.
+
+**[14]** Why might the disturbance in the model from **[08]** (or **[12]**) be autocorrelated? Again, explain with examples specific to this context.
+
+**[15]** What issues would autocorrelation in the disturbance cause for OLS when estimating the model in **[08]** (or **[12]**)?
+
+**[16]** Use the residuals from your estimated model in **[08]** to test for first-order autocorrelation. Show the steps of your test and report your conclusion.
+
+**[17]** Suppose you find evidence of autocorrelation in the disturbance from **[16]**. What should you do to address this issue?
+
+**[18]** Now let's estimate a dynamic model *with lagged explanatory variables*. Specifically, build upon the model from **[08]** so that your new model now includes contemporaneous inflation and GDP per capita *and* their lags (you should now have four explanatory variables).
+
+**[19]** Use the results from your dynamic model in **[18]** and your static model in **[08]** to discuss which model you think is more appropriate for this setting.
+
+**[20]** Now let's estimate a dynamic model *with a lagged outcome variable*, i.e., an ADL model. Specifically, estimate an ADL(1,0) based upon the model from **[08]**. In other words: Regress the given year's birth rate on contemporaneous GPD per capita and inflation *and* the lag of birth rate.
+
+**[21]** Are the estimates for this ADL(1,0) model meaningfully different from the previous models? Explain your answer.
+
+**[22]** If the disturbance is autocorrelated, what problems would this autocorrelation cause for your OLS-based estimates in **[20]**?
+
+**[23]** Test for autocorrelation in the disturbance of the ADL(1,0) model that you estimated in **[20]**. Discuss the conclusion of your test.
+
+## Stationarity
+
+**[24]** Return to the time-series figures in **[03]** through **[07]**. Do any of the figures suggest that the variables may be non-stationary? Explain your answer.
+
+*Note:* You can focus on mean- and variance-stationarity for this question (ignore covariance stationarity).
+
+**[25]** If you find evidence of non-stationarity in **[24]**, what problems might this cause for your OLS estimates throughout this assignment?

@@ -1,0 +1,88 @@
+---
+title: "Problem Set 3: Causality and Review"
+subtitle: "EC 421: Introduction to Econometrics"
+author: "Edward Rubin"
+format:
+  html:
+    toc: true
+    number-sections: true
+    self-contained: true
+    theme:
+    - cosmo
+    - my.scss
+---
+
+## Instructions
+
+[**Due**]{style="text-decoration: underline;"} Upload your answer on [Canvas](https://canvas.uoregon.edu/) *before* 11:59 pm (Pacific) on Thursday, 13 June 2025.
+
+[**Optional:**]{style="text-decoration: underline;"} This assignment is optional. If you submit it on Canvas, we will grade it, and it will replace the lowest grade among your assignments. If you do not submit it, your grade will not change.
+
+[**Important**]{style="text-decoration: underline;"} You must submit your answers as an HTML or PDF file, built from an RMarkdown (`.RMD`) or Quarto (`.qmd`) file. **Do not submit the `.RMD` or `.qmd` file.** You will not receive credit for it.
+
+[**Integrity**]{style="text-decoration: underline;"} If you are suspected of cheating, then you will receive a zero—for the assignment and possibly for the course. We may report you to the dean. **Cheating includes copying from your classmates, from the internet, and from previous assignments.**
+
+[**Objective**]{style="text-decoration: underline;"} This problem set has three main purposes: (1) reinforce what you learned about causality; (2) review the material from our course; (3) help you prepare for the final.
+
+## Causality
+
+Suppose we are analyzing a public policy where some individuals ($i$) receive a treatment ($\text{trt} = 1$) and others do not ($\text{trt}= 0$). We observe the following dataset.
+
+| $i$ | $\text{trt}$ | $y_1$ | $y_0$ |
+|:---:|:-------:|:-----:|:-----:|
+| 1   |  1      | 11    | 10    |
+| 2   |  1      | 10    |  8    |
+| 3   |  1      | 12    |  7    |
+| 4   |  1      | 9     |  5    |
+| 5   |  1      | 13    |  9    |
+| 6   |  0      | 5     |  4    |
+| 7   |  0      | 7     |  1    |
+| 8   |  0      | 8     |  3    |
+| 9   |  0      | 6     |  2    |
+| 10  |  0      | 4     |  1    |
+
+: Imaginary data
+
+**\[01\]** Calculate the individual treatment effect for each individual (each $i$).
+
+**\[02\]** Explain why this dataset would be impossible to observe the "real life".
+
+**\[03\]** Calculate the average treatment effect.
+
+**\[04\]** Which data points would we observe in the real world? Briefly explain.
+
+**\[05\]** Would we have selection bias if we compared the average $y_1$ for the treated group to the average $y_0$ for the control group? Explain.
+
+**\[06\]** Explain how randomized experiments avoid selection bias.
+
+**\[07\]** Suppose even-numbered individuals received the treatment and odd-numbered individuals did not. Would this "randomization" avoid selection bias? Explain.
+
+## Time-series review
+
+**\[08\]** What are the benefits and drawback of using a dynamic model with a lagged outcome variable?
+
+**\[09\]** Explain why we care whether time-series data are non-stationary.
+
+**\[10\]** Suppose $y_t = \alpha + 2 t + u_t$ where $u_t$ is a well-behaved disturbance (mean zero; variance $\sigma^2_{u}$). Is $y_t$ mean stationary? Explain your answer.
+
+**\[11\]** Continuing the definition of $y_t$ in **[10]**: is the difference $\Delta y_t = y_t - y_{t-1}$ mean stationary? Explain your answer.
+
+**\[12\]** Imagine you have a regression model that includes a lagged outcome variable. Is OLS unbiased and/or consistent for the coefficients? Explain how your answer depends on whether the disturbance is autocorrelated.
+
+## General review
+
+**\[13\]** Explain how measurement error (as defined in class) in an explanatory variable affects OLS's estimates for that variable's coefficients.
+
+**\[14\]** Explain how we can sign the bias from omitted variable bias.
+
+**\[15\]** Explain the difference between $u_i$ and $e_i$—and explain why they are both so important.
+
+**\[16\]** Explain why we discuss exogeneity so much.
+
+**\[17\]** Define a "standard error" and explain why we need it.
+
+**\[18\]** Why does heteroskedasticity matter?
+
+**\[19\]** What is a $p$-value?
+
+**\[20\]** Define autocorrelation and explain why it matters.

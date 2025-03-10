@@ -20,7 +20,18 @@ For information on the course specifics, please see the [syllabus](https://raw.g
 <br>Due: Sunday, 02 March 2025 by 11:59 PM. Submit via [Canvas](https://canvas.uoregon.edu/courses/254921/assignments/1804308).
 <br>Files: [assignment](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/002/002-questions.html) | [data](https://github.com/edrubin/EC421W25/tree/master/problem-sets/002/data-births.csv)
 
-*Note:* You can use the box in the top right corner with the `⋯` to download the files. (You can also use the button with the download arrow.)
+**Problem Set 3: Causality and review**
+<br>Due: *Optional* Thursday, 13 March 2025 by 11:59 PM. Submit via [Canvas](https://canvas.uoregon.edu/courses/254921/assignments/1810524).
+<br>Files: [assignment](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/003/003-questions.html)
+
+## Final materials
+
+In addition to the past exams linked below, here are some additional materials to help you prepare for the final:
+
+- [topics list](https://raw.githack.com/edrubin/EC421W25/master/final/prep/final-topics.html) lists the main topics you should know from each of the sets of slides *since the midterm* (you need to know the [pre-midterm topics](https://raw.githack.com/edrubin/EC421W25/master/midterm/prep/topics/midterm-topics.html) as well);
+- [practice questions](https://raw.githack.com/edrubin/EC421W25/master/final/prep/final-review.html) provides a bunch of review questions to help test your understanding. 
+
+*Note:* I will not post answers to the practice questions, but you can certainly ask about them in the review sessions (Tuesday in class; Wednesday in lab) or in office hours.
 
 ## Midterm materials
 

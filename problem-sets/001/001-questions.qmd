@@ -1,0 +1,288 @@
+---
+title: "Problem Set 1: Heteroskedasticity, Clustering, and OLS Assumptions"
+subtitle: "EC 421: Introduction to Econometrics"
+author: "Edward Rubin"
+format:
+  html:
+    toc: true
+    number-sections: true
+    self-contained: true
+    theme:
+    - cosmo
+    - ed.scss
+editor:
+  render-on-save: true
+---
+
+```{r, setup, include = F}
+# Load magrittr
+library(magrittr)
+# Knitr options
+knitr::opts_chunk$set(
+  comment = "#>",
+  fig.align = "center",
+  fig.height = 7,
+  fig.width = 10.5,
+  warning = F,
+  message = F
+)
+knitr::opts_chunk$set(dev = "svg")
+options(device = function(file, width, height) {
+  svg(tempfile(), width = width, height = height)
+})
+options(digits = 4)
+options(width = 90)
+```
+
+<!-- <noscript> -->
+
+## Instructions
+
+[**Due**]{style="text-decoration: underline;"} Upload your answer on [Canvas](https://canvas.uoregon.edu/) *before* midnight on Saturday, 08 February 2025.
+
+[**Important**]{style="text-decoration: underline;"} You must submit your answers as an HTML or PDF file, built from an RMarkdown (`.rmd`) or Quarto (`.qmd`) file. **Do not submit the `.rmd` or `.qmd` file.** You will not receive credit for it.
+
+If we ask you to create a figure or run a regression, then the figure or the regression results should be in the document that you submit (not just the code—we want the actual figure or regression output with coefficients, standard errors, *etc.*).
+
+[**Integrity**]{style="text-decoration: underline;"} If you are suspected of cheating, then you will receive a zero—for the assignment and possibly for the course. We may report you to the dean. **Cheating includes copying from your classmates, from the internet, and from previous assignments.**
+
+[**README!**]{style="text-decoration: underline;"} The data in this problem set come from the 2023 [American Community Survey](https://www.census.gov/programs-surveys/acs) (ACS; downloaded from [IPUMS USA](https://usa.ipums.org/usa/)). The ACS annually surveys approximately 3.5 million households. I've provided a random subset of 10,000 individuals—all of whom are at least 18 years old. The data are stored in a CSV file named `data-acs.csv`. 
+
+The table below describes each variable in the dataset.
+
+| Variable name      | Variable description |
+|:-------------------|:---------------------|
+| `state` | The [state FIPS code](https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt) for the individual's state of residence (2-digit numeric code). (`character`) |
+| `county` | The [county FIPS code](https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt) for the individual's county of residence (5-digit numeric code). (`character`) |
+| `sex`  | The individual's sex (`Female` or `Male`). (`character`) |
+| `age`  | The individual's age (`18` to `99`). (`integer`) |
+| `race`  | The individual's race (6 broad categories). (`character`) |
+| `hispanic`  | Whether the individual is `Hispanic` or `Non-Hispanic`. (`character`) |
+| `educ`  | A rough estimate of the individual's years of eduation (`1=` first grade; `17=` graduate school). (`integer`) |
+| `empstat`  | The individual's employment status (`Employed`, `Unemployed`, `Not in labor force`). (`character`) |
+| `hrs_wk`  | The number of hours the individual works per week. (`integer`) |
+| `income`  | The individual's income in dollars. (`integer`) |
+| `deg_bachelors`  | A binary indicator for whether the individual has a bachelor's degree. (`integer`) |
+| `deg_masters`  | A binary indicator for whether the individual has a master's degree. (`integer`) |
+| `deg_profession`  | A binary indicator for whether the individual has a professional degree (e.g., law or medicine). (`integer`) |
+| `deg_phd`  | A binary indicator for whether the individual has a doctorate. (`integer`) |
+| `i_female`  | A binary indicator for whether the individual's sex is female. (`integer`) |
+| `i_black`  | A binary indicator for whether the individual is Black. (`integer`) |
+| `i_white`  | A binary indicator for whether the individual is White. (`integer`) |
+| `i_hispanic`  | A binary indicator for whether the individual is Hispanic. (`integer`) |
+| `i_workforce`  | A binary indicator for whether the individual is in the workforce (employed or unemployed). (`integer`) |
+| `i_employed`  | A binary indicator for whether the individual is employed. (`integer`) |
+
+: Variable names and descriptions
+
+[**Objective**]{style="text-decoration: underline;"} This problem set has three purposes: (1) reinforce the metrics topics we introduced (esp. heteroskedasticity, clustering, and violations of OLS's assumptions) in class; (2) build your [R]{.mono} toolset; (3) start building your intuition about causality within econometrics/regression.
+
+## Setup 
+
+**[01]** Load your `R` packages. You will probably want `tidyverse`, `here`, and `fixest` (among others). 
+
+*Reminder:* `pacman` and it's `p_load()` function make package management easier—you just use `p_load()` to load packages, and `R` will install the packages if they're not already installed.
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer01}
+#| include: false
+
+# Load packages using 'pacman'
+library(pacman)
+p_load(tidyverse, patchwork, fixest, here)
+
+```
+
+:::
+
+**[02]** Now load the data (stored in `data-acs.csv`).
+
+*Hints:*
+
+1. If the first problem set did not go well, check out our solutions! In addition to showing you how we solved the last problem set, our answers will help you with the various steps of this problem set.
+2. This dataset is the same as the last dataset but with two additional variables (`state` and `county`).
+
+I saved the data as a CSV, so you'll want to use a function that can read CSV files—for example, `read_csv()` in the `readr` package, which is part of the `tidyverse`.
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer02}
+#| include: false
+
+# Load data
+acs_df = here('data-acs.csv') %>% read_csv()
+
+```
+
+:::
+
+## Visualize the data
+
+Before we start, let's take a look at the data—and practice our data visualization skills.
+
+**[03]** Create a histogram that describes the distribution of log-10 income for each of the following four groups:
+
+- females aged 45 and under;
+- non-females aged 45 and under;
+- females over 45;
+- non-females over 45.
+
+To be clear: You should have four separate histograms. Don't forget to label the axes and title each plot.
+
+*Hints:*
+
+- You can tell `ggplot()` to use log base-10 scaling on the x-axis by using `scale_x_log10()`. (You could also use the `log10()` function to create a new variable, but I like the first option more.)
+- Remember the `filter()` function.
+- Alternatively, you could use the `fill` aesthetic in `ggplot()`.
+- You might also check out the `facet_grid()` function from `ggplot2`.
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer03}
+#| include: false
+
+# Create a variable for "over 45"
+acs_df = acs_df |> mutate(over_45 = age > 45)
+# Create the plot
+ggplot(acs_df, aes(x = income)) +
+geom_histogram(color = NA, fill = 'slateblue', bins = 50) +
+scale_x_log10(labels = scales::dollar) +
+theme_minimal(base_size = 10, base_family = 'Fira Sans Condensed') +
+facet_grid(
+  i_female ~ over_45,
+  labeller = labeller(
+    i_female = c(`0` = "Male", `1` = "Female"),
+    over_45 = c(`FALSE` = "45 and under", `TRUE` = "Over 45")
+  )
+)
+
+```
+
+:::
+
+**[04]** What do you notice about the distribution of income in the four groups?
+
+:::{style="display: none;"}
+[Answer]{.ans} The distribution of log-income is fairly symmetric all four groups. The distributions of females and non-females are much more similar for the under-45 group than the over-45 group.
+
+:::
+
+**[05]** Why would we want to use log-10 income (instead of plain income)?
+
+:::{style="display: none;"}
+[Answer]{.ans} We use log-10 income to compress the distribution. Beacuse the distribution of income is highly skewed, the log transformation makes the distribution more symmetric and more easily visualized.
+
+:::
+
+**[06]** Does plotting the distribution of log-10 income instead of income accurately represent the data? Explain your answer.
+
+:::{style="display: none;"}
+[Answer]{.ans} It depends on the goal of the visualization. If the goal is to show the distribution of income, then the log-10 transformation may not accurately represent the data; it may hide the actual skew of the data. If the goal is to get a sense of the variability in income, then maybe the log-10 visualization helps.  
+
+:::
+
+**[07]** What happens to the individuals with 0 income when we plot the distribution of log-10 income?
+
+:::{style="display: none;"}
+[Answer]{.ans} The log-10 transformation of 0 is negative infinity. So, when we plot the distribution of log-10 income, the individuals with 0 income are not visible.
+
+:::
+
+## Heteroskedasticity
+
+**[08]** Let's go back to our first regression in the last problem set. We estimated the model:
+
+$$
+  \text{Income} = \beta_0 + \beta_1 \text{Education}_i + u_i
+$$
+
+Estimate the model again. Use the `lm()` function. Set the option `na.action = na.exclude` inside of `lm()`.
+
+Now plot—scatterplot using `geom_point()`—the residuals against education. What do you notice?
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer08}
+#| include: false
+
+# Estimate the model
+reg08 = lm(income ~ educ, data = acs_df, na.action = na.exclude)
+# Add residuals to the dataset
+acs_df$e08 = residuals(reg08)
+# Plot
+ggplot(acs_df, aes(x = educ, y = e08)) +
+geom_point() +
+scale_x_continuous('Education') +
+theme_minimal(base_size = 10, base_family = 'Fira Sans Condensed')
+
+```
+
+The scatterplot suggests disturbances may not be homoskedastic. The residuals have larger variance for individuals with more education.
+
+:::
+
+**[09]** We don't need to rely on scatterplots to detect heteroskedasticity. We have formal tests! Use the Goldfeld-Quandt test to test for heteroskedasticity in the model. Make sure to report the *p*-value and your conclusion.
+
+*Hint:* The course notes walk you through this test.
+
+*Note:* I want you to do the test manually (do not use the `gqtest()` function from the `lmtest` package).
+
+:::{style="display: none;"}
+[Answer]{.ans}
+
+```{r, answer09}
+#| include: false
+```
+
+:::
+
+**[10]** Now use the White test to test for heteroskedasticity in the model. Make sure to report the *p*-value and your conclusion.
+
+**[11]** What is the difference between the Goldfeld-Quandt test and the White test?
+
+**[12]** Assuming that you found significant evidence of heteroskedasticity, what are some ways to address the issue?
+
+**[13]** "Fix" your standard errors using White's heteroskedasticity-robust standard errors. How much do the standard errors change?
+
+*Hint:* You can set `vcov = 'het'` inside of `feols()` to get heteroskedasticity-robust standard errors. For example, `feols(y ~ x, data = data, vcov = 'het')`.
+
+## Clustering
+
+Suppose we are interested in estimating the returns to education *but* we suspect the returns may differ by individuals' races.
+
+**[14]** Estimate the model:
+
+$$
+  \text{Income} = \beta_0 + \beta_1 \text{Education}_i + \beta_2 \mathbb{I}(\text{White})_i + \beta_3 \text{Education}_i \times \mathbb{I}(\text{White})_i + u_i
+$$
+where $\mathbb{I}(\text{White})_i$ is the indicator for whether the individual is white (`i_white`).
+
+Use our "standard" (IID) standard errors (the ones from 320 that assume *homoskedasticity*).
+
+Report the coefficient estimates and standard errors in a table.
+
+**[15]** Interpret the coefficient on the interaction term in **[14]**.
+
+**[16]** Re-estimate the model from **[14]** using cluster-robust standard errors. Use the `cluster` option in `feols()` to cluster the standard errors by county (`county`), *e.g.*, `feols(y ~ x, data, cluster = ~ county)`.
+
+**[17]** Compare the standard errors from **[14]** and **[16]**. What do you notice? Are they meaningfully different? Explain.
+
+**[18]** Why would we potentially want to cluster our standard errors at the county level in this dataset?
+
+**[19]** Why are the coefficients in **[14]** and **[16]** the same?
+
+## General questions
+
+**[20]** Which assumption of OLS is violated when the error term is heteroskedastic?
+
+**[21]** Which assumption of OLS is violated when we need to cluster our standard errors?
+
+**[22]** Why is OLS still unbiased when the disturbance is heteroskedastic?
+
+**[23]** Why is OLS inefficient when the disturbance is heteroskedastic?
+
