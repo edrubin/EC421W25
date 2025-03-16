@@ -5,8 +5,7 @@
 notes/*/slides_cache/*
 
 # Non-review test files
-midterm/exam-inclass/*
-final/exam-inclass/*
+final/exam-inclass*
 
 # Problem sets: Assigned
 # PS 0

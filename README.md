@@ -22,7 +22,7 @@ For information on the course specifics, please see the [syllabus](https://raw.g
 
 **Problem Set 3: Causality and review**
 <br>Due: *Optional* Thursday, 13 March 2025 by 11:59 PM. Submit via [Canvas](https://canvas.uoregon.edu/courses/254921/assignments/1810524).
-<br>Files: [assignment](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/003/003-questions.html)
+<br>Files: [assignment](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/003/003-questions.html) | [solutions](https://raw.githack.com/edrubin/EC421W25/master/problem-sets/003/003-solutions.html)
 
 ## Final materials
 

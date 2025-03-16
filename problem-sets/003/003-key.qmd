@@ -1,0 +1,236 @@
+---
+title: "Problem Set 3: Causality and Review"
+subtitle: "EC 421: Introduction to Econometrics"
+author: "Edward Rubin"
+editor:
+  render-on-save: true
+format:
+  html:
+    toc: true
+    number-sections: true
+    self-contained: true
+    theme:
+    - cosmo
+    - ed.scss
+---
+
+## Instructions
+
+[**Due**]{style="text-decoration: underline;"} Upload your answer on [Canvas](https://canvas.uoregon.edu/) *before* 11:59 pm (Pacific) on Thursday, 13 June 2025.
+
+[**Optional**]{style="text-decoration: underline;"} This assignment is optional. If you submit it on Canvas, we will grade it, and it will replace the lowest grade among your assignments. If you do not submit it, your grade will not change.
+
+[**Important**]{style="text-decoration: underline;"} You must submit your answers as an HTML or PDF file, built from an RMarkdown (`.RMD`) or Quarto (`.qmd`) file. **Do not submit the `.RMD` or `.qmd` file.** You will not receive credit for it.
+
+[**Integrity**]{style="text-decoration: underline;"} If you are suspected of cheating, then you will receive a zero—for the assignment and possibly for the course. We may report you to the dean. **Cheating includes copying from your classmates, from the internet, and from previous assignments.**
+
+[**Objective**]{style="text-decoration: underline;"} This problem set has three main purposes: (1) reinforce what you learned about causality; (2) review the material from our course; (3) help you prepare for the final.
+
+## Causality
+
+Suppose we are analyzing a public policy where some individuals ($i$) receive a treatment ($\text{trt} = 1$) and others do not ($\text{trt}= 0$). We observe the following dataset.
+
+| $i$ | $\text{trt}$ | $y_1$ | $y_0$ |
+|:---:|:-------:|:-----:|:-----:|
+| 1   |  1      | 11    | 10    |
+| 2   |  1      | 10    |  8    |
+| 3   |  1      | 12    |  7    |
+| 4   |  1      | 9     |  5    |
+| 5   |  1      | 13    |  9    |
+| 6   |  0      | 5     |  4    |
+| 7   |  0      | 7     |  1    |
+| 8   |  0      | 8     |  3    |
+| 9   |  0      | 6     |  2    |
+| 10  |  0      | 4     |  1    |
+
+: Imaginary data
+
+**\[01\]** Calculate the individual treatment effect for each individual (each $i$).
+
+:::{.answer}
+
+[Answer]{.ans} The individual treatment effect $\tau_i$ for each individual is $y_{1i} - y_{0i}$:
+
+| $i$ | $\text{trt}$ | $y_1$ | $y_0$ | $\tau_i$ |
+|:---:|:-------:|:-----:|:-----:|:-----:|
+| 1   |  1      | 11    | 10    | 1    |
+| 2   |  1      | 10    |  8    | 2    |
+| 3   |  1      | 12    |  7    | 5    |
+| 4   |  1      | 9     |  5    | 4    |
+| 5   |  1      | 13    |  9    | 4    |
+| 6   |  0      | 5     |  4    | 1    |
+| 7   |  0      | 7     |  1    | 6    |
+| 8   |  0      | 8     |  3    | 5    |
+| 9   |  0      | 6     |  2    | 4    |
+| 10  |  0      | 4     |  1    | 3    |
+
+:::
+
+**\[02\]** Explain why this dataset would be impossible to observe the "real life".
+
+:::{.answer}
+
+[Answer]{.ans} This dataset is impossible to observe in real life because of the *Fundamental Problem of Causal Inference*: we cannot observe both $y_1$ and $y_0$ for the same individual. We can only observe one of the two outcomes for each individual.
+
+:::
+
+**\[03\]** Calculate the average treatment effect.
+
+:::{.answer}
+
+[Answer]{.ans} The average treatment effect (ATE) is the average of the individual treatment effects:
+
+$$1 + 2 + 5 + 4 + 4 + 1 + 6 + 5 + 4 + 3) / 10 = 3.5$$
+
+:::
+
+**\[04\]** Which data points would we observe in the real world? Briefly explain.
+
+:::{.answer}
+
+[Answer]{.ans} In the real world, we would observe $y_1$ for treated individuals $(\text{trt} = 1)$ and $y_0$ for control individuals $(\text{trt} = 0)$.
+
+:::
+
+**\[05\]** Would we have selection bias if we compared the average $y_1$ for the treated group to the average $y_0$ for the control group? Explain.
+
+:::{.answer}
+
+[Answer]{.ans} As defined in class, selection bias occurs when the control group does not provide a good *counterfactual* for the treatment group. More formally, we defined it as
+$$\text{Selection bias} = \text{Avg}[y_0 | \text{trt} = 1] - \text{Avg}[y_0 | \text{trt} = 0].$$
+In this case, we can actually calculate both of these averages/expectations
+$$\text{Avg}[y_0 | \text{trt} = 1] = (10 + 8 + 7 + 5 + 9) / 5 = 7.8$$
+$$\text{Avg}[y_0 | \text{trt} = 0] = (4 + 1 + 3 + 2 + 1) / 5 = 2.2$$
+and they are not equal—we have selection bias.
+
+More generally, we should definitely be *concerned* about selection bias unless we know that treatment was assigned randomly.
+
+:::
+
+**\[06\]** Explain how randomized experiments avoid selection bias.
+
+:::{.answer}
+[Answer]{.ans} By randomly sampling individuals into the treatment and control groups, we ensure that the two groups are (on average) drawn from the same population. In other words: On average, the average $y_0$ for the treated group is the same as the average $y_0$ for the control group.
+:::
+
+**\[07\]** Suppose even-numbered individuals received the treatment and odd-numbered individuals did not. Would this "randomization" avoid selection bias? Explain.
+
+:::{.answer}
+[Answer]{.ans} While this "randomization" is not actually random, it could, on average, avoid selection bias. This avoidance of selection bias would occur if people did not *select into* being even or add (which seems plausible).
+
+Again, because we actually observe both $y_0$ and $y_1$ for all of the individuals in this dataset, we can calculate the selection bias from assigning treatment based on even/odd numbers. We can calculate the averages
+$$\text{Avg}[y_0 | \text{trt} = 1\; (\text{even}\;i)] = (8 + 5 + 4 + 3 + 1) / 5 = 4.2$$
+$$\text{Avg}[y_0 | \text{trt} = 0\; (\text{odd}\;i)] = (10 + 7 + 9 + 1 + 2) / 5 = 5.8$$
+There is still a bit of selection bias, but it is much smaller than in **[05]**. (With such a small dataset, we should not be surprised that the bias is not zero—selection bias is actually a population-level concept—hence the *on average* discussion.)
+:::
+
+## Time-series review
+
+**\[08\]** What are the benefits and drawback of using a dynamic model with a lagged outcome variable?
+
+:::{.answer}
+[Answer]{.ans} 
+
+*Potential benefits:* It's possible that the right model includes the lag of the outcome variable—i.e., today's outcome depends upon yesterday's outcome. Writing down the correct model moves important variation out of the disturbance and into the model (improving its ability to explain the outcome and reducing the standard errors).
+
+*Potential drawbacks:* OLS isn't great at estimating models with lagged outcome variables—especially when the disturbance is autocorrelated. If the disturbance *is* autocorrelated, then OLS is both biased and inconsistent for estimating the coefficients. If the disturbance is not autocorrelated, then OLS is biased but potentially consistent.
+:::
+
+**\[09\]** Explain why we care whether time-series data are non-stationary.
+
+:::{.answer}
+[Answer]{.ans} Non-stationary data can lead to spurious regression results. In other words, we can find relationships that are not actually there. For instance, if two variables are actually independent of eachother but both are trending with time, we could find a strong relationship between them and make spurious conclusions. This finding would be problematic if we want to find relationships that are actually there. This issue is akin to omitted-variable bias but is a bit more subtle.
+:::
+
+**\[10\]** Suppose $y_t = \alpha + 2 t + u_t$ where $u_t$ is a well-behaved disturbance (mean zero; variance $\sigma^2_{u}$). Is $y_t$ mean stationary? Explain your answer.
+
+:::{.answer}
+[Answer]{.ans} $y_t$ is not mean stationary, as the mean of $y_t$ is
+$$\text{E}[y_t] = \text{E}[\alpha + 2 t + u_t] = \text{E}[\alpha] + \text{E}[2 t] + \text{E}[u_t] = \alpha + 2 t.$$
+Because the mean of the variable depends on time, the variable is not mean stationary.
+:::
+
+**\[11\]** Continuing the definition of $y_t$ in **[10]**: is the difference $\Delta y_t = y_t - y_{t-1}$ mean stationary? Explain your answer.
+
+:::{.answer}
+[Answer]{.ans} The difference $\Delta y_t = y_t - y_{t-1}$ is mean stationary because
+\begin{align}
+\text{E}[\Delta y_t] &= \text{E}[y_t - y_{t-1}] \\
+&= \text{E}[(\alpha + 2 t + u_t) - (\alpha + 2 (t-1) + u_{t-1})] \\
+&= \text{E}[\alpha - \alpha + 2 t - 2 t + 2 + u_t - u_{t-1}] \\
+&= 2
+\end{align}
+Because the expected value of $\Delta y_t$ does not depend on time, it is mean stationary.
+:::
+
+**\[12\]** Imagine you have a regression model that includes a lagged outcome variable. Is OLS unbiased and/or consistent for the coefficients? Explain how your answer depends on whether the disturbance is autocorrelated.
+
+:::{.answer}
+[Answer]{.ans} For models with lagged outcome variables, OLS is
+
+- biased but potentially consistent if the disturbance is not autocorrelated;
+- biased and inconsistent if the disturbance is autocorrelated.
+:::
+
+## General review
+
+**\[13\]** Explain how measurement error (as defined in class) in an explanatory variable affects OLS's estimates for that variable's coefficients.
+
+:::{.answer}
+[Answer]{.ans} Measurement error in an explanatory variable (as defined in class) biases OLS's estimates of the coefficients towards zero. The measurement error makes the explanatory variable less correlated with the true value of the variable, which makes it less correlated with the dependent variable. This lack of correlation leads OLS to estimate the coefficient as smaller than it should be.
+:::
+
+**\[14\]** Explain how we can sign the bias from omitted variable bias.
+
+:::{.answer}
+[Answer]{.ans} We can use the probability limit of the OLS estimator to sign the bias from omitted variable bias. Suppose the included variable is $x_1$, the omitted variable is $x_2$, and the model is
+$$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + u.$$
+When we omit $x_2$, the probability limit of the OLS estimator for $\beta_1$ is
+$$\text{plim} \hat{\beta}_1 = \beta_1 + \beta_2 \frac{\text{Cov}(x_1, x_2)}{\text{Var}(x_1)}.$$
+Depending on the sign of (a) $\beta_2$ (the effect of $x_2$ on $y$) and (b) $\text{Cov}(x_1, x_2)$ (the relationship between the included variable and the omitted variable), we can determine whether the bias is positive (e.g., $\beta_2 > 0$ and $\text{Cov}(x_1, x_2) > 0$) or negative (e.g., $\beta_2 > 0$ and $\text{Cov}(x_1, x_2) < 0$).
+:::
+
+**\[15\]** Explain the difference between $u_i$ and $e_i$—and explain why they are both so important.
+
+:::{.answer}
+[Answer]{.ans} The difference between $u_i$ and $e_i$ is
+
+- $u_i$ is the unobserved disturbance, which is a population parameter—individual $i$'s distance from the population regression line;
+- $e_i$ is the observed residual, a sample-based statistic, which is individual $i$'s distance from the sample regression line.
+
+Our assumptions center on $u_i$, e.g., its mean, its variance, its covariance with other disturbances, and its independence from the explanatory variables. We use $e_i$ to estimate $u_i$ and to test our assumptions about $u_i$.
+:::
+
+**\[16\]** Explain why we discuss exogeneity so much.
+
+:::{.answer}
+[Answer]{.ans} Exogeneity is central to OLS's unbiasedness, consistency, and interpretability as estimating causal effects. If the explanatory variables are exogenous, then OLS is unbiased, consistent, and we can interpret the effects as causal. If the explanatory variables are not exogenous, then OLS is biased and inconsistent. We typically prefer causal interpretations and unbiased/consistent estimates, so we worry about exogeneity.
+:::
+
+**\[17\]** Define a "standard error" and explain why we need it.
+
+:::{.answer}
+[Answer]{.ans} The standard error gives the standard deviation of the estimator's distribution. If we repeatedly drew samples from the population, the standard error tells us how much we should expect the estimator to change across samples.
+
+The standard error thus helps us understand the uncertainty inherent to an estimator's estimates. Accordingly, the standard error is a key to calculating confidence intervals and hypothesis tests.
+:::
+
+**\[18\]** Why does heteroskedasticity matter?
+
+:::{.answer}
+[Answer]{.ans} Heteroskedasticity causes OLS's standard errors to be biased, which leads to incorrect hypothesis tests and confidence intervals—we could end up drawing incorrect conclusions from the data. Heteroskedasticity also makes OLS inefficient—we are not using the data as effectively as we could be.
+:::
+
+**\[19\]** What is a *p*-value?
+
+:::{.answer}
+[Answer]{.ans} A *p*-value gives the probability of observing a test statistic at least as extreme as the one we observed **if** the null hypothesis was true. 
+:::
+
+**\[20\]** Define autocorrelation and explain why it matters.
+
+:::{.answer}
+[Answer]{.ans} Autocorrelation occurs when a variable depends upon its own past value(s).
+
+Autocorrelation matters because it violates OLS's assumption that the disturbance in one period is uncorrelated with the disturbance in another period. For models *without* a lagged outcome variable: this violation causes OLS to be biased for estimating the standard errors (and to be inefficient, as with heteroskedasticity). For models *with* a lagged outcome variable: this violation causes OLS to be biased and inconsistent for estimating the coefficients.
+:::
